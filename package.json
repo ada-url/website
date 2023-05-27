@@ -40,6 +40,8 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@types/unist": "^2.0.6",
+    "markdown-wasm": "^1.2.0",
     "mdast-util-toc": "^6.1.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.9.6",
