@@ -1,0 +1,57 @@
+{
+  "name": "ada-url.com",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "rome check . && rome format .",
+    "lint-fix": "rome check . --apply-unsafe && rome format . --write"
+  },
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.1.2",
+    "@radix-ui/react-aspect-ratio": "^1.0.3",
+    "@radix-ui/react-collapsible": "^1.0.3",
+    "@radix-ui/react-dialog": "^1.0.4",
+    "@radix-ui/react-dropdown-menu": "^2.0.5",
+    "@radix-ui/react-scroll-area": "^1.0.4",
+    "@radix-ui/react-separator": "^1.0.3",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@types/node": "20.2.5",
+    "@types/react": "18.2.7",
+    "@types/react-dom": "18.2.4",
+    "autoprefixer": "10.4.14",
+    "class-variance-authority": "^0.6.0",
+    "clsx": "^1.2.1",
+    "contentlayer": "^0.3.2",
+    "date-fns": "^2.30.0",
+    "lucide-react": "^0.221.0",
+    "next": "13.4.4",
+    "next-contentlayer": "^0.3.2",
+    "next-themes": "^0.2.1",
+    "postcss": "8.4.23",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-wrap-balancer": "^0.5.0",
+    "tailwind-merge": "^1.12.0",
+    "tailwindcss": "3.3.2",
+    "tailwindcss-animate": "^1.0.5",
+    "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "mdast-util-toc": "^6.1.1",
+    "rehype-autolink-headings": "^6.1.1",
+    "rehype-pretty-code": "^0.9.6",
+    "rehype-slug": "^5.1.0",
+    "remark": "^14.0.3",
+    "remark-code-import": "^1.2.0",
+    "remark-gfm": "^3.0.1",
+    "rome": "^12.1.2",
+    "unist-builder": "^3.0.1",
+    "unist-util-visit": "^4.1.2"
+  },
+  "volta": {
+    "node": "20.2.0"
+  }
+}

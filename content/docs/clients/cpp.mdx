@@ -1,0 +1,145 @@
+---
+title: C++ Client
+description: How to install and use Ada in a C++ project
+---
+
+## Requirements
+
+The project is self-contained and has no dependency.
+A recent C++ compiler supporting C++17. We test GCC 9 or better, LLVM 10 or better and Microsoft Visual Studio 2022.
+
+## Building
+
+Ada uses **cmake** as a build system. It's recommended to have cmake available in your system.
+Run the following commands to compile and build Ada locally.
+
+<Steps>
+
+  ### Prepare
+
+  ```bash
+  cmake -B build
+  ```
+
+  ### Build
+
+  ```bash
+  cmake --build build
+  ```
+
+</Steps>
+
+## Usage
+
+Use the following code to run and test Ada.
+
+```cpp
+#include "ada.h"
+#include <iostream>
+
+  int main(int , char *[]) {
+    ada::result<ada::url_aggregator> url = ada::parse<ada::url_aggregator>("https://www.google.com");
+    url->set_protocol("http");
+    std::cout << url->get_protocol() << std::endl;
+    std::cout << url->get_host() << std::endl;
+    return EXIT_SUCCESS;
+  }
+```
+
+### Parsing & Validation
+
+- Parse and validate a URL from an ASCII or UTF-8 string
+
+```cpp
+ada::result<ada::url_aggregator> url =
+  ada::parse<ada::url_aggregator>("https://www.google.com");
+if (url) { /* URL is valid */ }
+```
+
+After calling **parse** function, you *must* check that the result is valid before
+accessing it when you are not sure that it will succeed. The following
+code is unsafe:
+
+```cpp
+ada::result<ada::url_aggregator> url =
+  ada::parse<ada::url_aggregator>("some bad url");
+url->get_href();
+```
+
+You should do...
+
+```cpp
+ada::result<ada::url_aggregator> url =
+  ada::parse<ada::url_aggregator>("some bad url");
+if(url) {
+  // next line is now safe:
+  url->get_href();
+} else {
+  // report a parsing failure
+}
+```
+
+For simplicity, in the examples below, we skip the check because
+we know that parsing succeeds.
+
+
+## Examples
+
+### Credentials
+
+```cpp
+auto url = ada::parse<ada::url_aggregator>("https://www.google.com");
+url->set_username("username");
+url->set_password("password");
+// ada->get_href() will return "https://username:password@www.google.com/"
+```
+
+### Protocol
+
+```cpp
+auto url = ada::parse<ada::url_aggregator>("https://www.google.com");
+url->set_protocol("wss");
+// url->get_protocol() will return "wss:"
+// url->get_href() will return "wss://www.google.com/"
+```
+
+### Host
+
+```cpp
+auto url = ada::parse<ada::url_aggregator>("https://www.google.com");
+url->set_host("github.com");
+// url->get_host() will return "github.com"
+// you can use `url.set_hostname` depending on your usage.
+```
+
+### Port
+
+```cpp
+auto url = ada::parse<ada::url_aggregator>("https://www.google.com");
+url->set_port("8080");
+// url->get_port() will return "8080"
+```
+
+### Pathname
+
+```cpp
+auto url = ada::parse<ada::url_aggregator>("https://www.google.com");
+url->set_pathname("/my-super-long-path")
+// url->get_pathname() will return "/my-super-long-path"
+```
+
+### Search/Query
+
+```cpp
+auto url = ada::parse<ada::url_aggregator>("https://www.google.com");
+url->set_search("target=self");
+// url->get_search() will return "?target=self"
+```
+
+### Hash/Fragment
+
+```cpp
+auto url = ada::parse<ada::url_aggregator>("https://www.google.com");
+url->set_hash("is-this-the-real-life");
+// url->get_hash() will return "#is-this-the-real-life"
+```
