@@ -34,7 +34,7 @@ export function MainNav() {
           Performance
         </Link>
         <Link
-          href='https://playground.ada-url.com'
+          href='/playground'
           className={cn('transition-colors hover:text-foreground/80 text-foreground/60')}
         >
           Playground

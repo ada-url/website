@@ -1,11 +1,11 @@
 import Link from 'next/link'
-
 import { Icons } from '@/components/icons'
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import { buttonVariants } from '@/components/ui/button'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { Metadata } from 'next'
+import LogoDisplay from '@/components/logo-display'
 
 export const metadata: Metadata = {
   title: {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default function IndexPage() {
   return (
-    <div className='container relative pb-10'>
+    <div className='flex flex-col items-center justify-center w-full h-full'>
       <PageHeader>
         <PageHeaderHeading>Ada URL Parser</PageHeaderHeading>
         <PageHeaderDescription>Parsing millions of URLs per second</PageHeaderDescription>
@@ -32,7 +32,11 @@ export default function IndexPage() {
             <Icons.gitHub className='mr-2 h-4 w-4' />
             GitHub
           </Link>
+          <Link href='/playground' className={cn(buttonVariants({ variant: 'outline' }))}>
+            Test-it
+          </Link>
         </div>
+        <LogoDisplay />
       </PageHeader>
     </div>
   )
