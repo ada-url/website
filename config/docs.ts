@@ -15,11 +15,6 @@ export const docsConfig: DocsConfig = {
       title: 'Playground',
       href: '/playground',
     },
-    {
-      title: 'GitHub',
-      href: 'https://github.com/ada-url/ada',
-      external: true,
-    },
   ],
   sidebarNav: [
     {

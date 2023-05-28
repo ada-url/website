@@ -42,14 +42,6 @@ export function MainNav() {
         >
           Playground
         </Link>
-        <Link
-          href='https://github.com/ada-url/ada'
-          className={cn(
-            'hidden text-foreground/60 transition-colors hover:text-foreground/80 lg:block',
-          )}
-        >
-          GitHub
-        </Link>
       </nav>
     </div>
   )
