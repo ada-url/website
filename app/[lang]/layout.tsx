@@ -1,9 +1,9 @@
-import '@/styles/globals.css'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
-import { ThemeProvider } from '@/provider/theme-provider'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
+import { ThemeProvider } from '@/provider/theme-provider'
+import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
 

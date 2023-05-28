@@ -21,10 +21,12 @@ interface DocPageProps {
   }
 }
 
- 
 async function getDocFromParams({ params }: DocPageProps) {
+  const lang = params.lang
   const slug = params.slug?.join('/') || ''
-  const doc = allDocs.find((doc) =>doc.slug === `/docs/${slug}`)
+  const doc = allDocs.find(
+    (doc) => doc.slug === `/docs/${slug}.${lang}` || doc.slug === `/docs/${slug}.en`,
+  )
 
   if (!doc) {
     return null
