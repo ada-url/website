@@ -5,6 +5,13 @@ import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/componen
 import { buttonVariants } from '@/components/ui/button'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: {
+    absolute: 'Ada URL Parser - Fast WHATWG Compliant URL parser',
+  },
+}
 
 export default function IndexPage() {
   return (

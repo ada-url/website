@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: {
-    default: 'Home',
+    default: 'Ada URL Parser',
     template: `%s - ${siteConfig.name}`,
   },
   description: siteConfig.description,
