@@ -13,7 +13,7 @@ export const docsConfig: DocsConfig = {
     },
     {
       title: 'Playground',
-      href: 'https://playground.ada-url.com',
+      href: '/playground',
     },
     {
       title: 'GitHub',
