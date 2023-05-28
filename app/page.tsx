@@ -1,11 +1,11 @@
-import Link from 'next/link'
 import { Icons } from '@/components/icons'
+import LogoDisplay from '@/components/logo-display'
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import { buttonVariants } from '@/components/ui/button'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { Metadata } from 'next'
-import LogoDisplay from '@/components/logo-display'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: {
