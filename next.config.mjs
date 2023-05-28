@@ -4,11 +4,16 @@ import { withContentlayer } from 'next-contentlayer'
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  i18n: {
+    locales: ['en', 'fr'],
+    defaultLocale: 'en',
+    localeDetection: true,
+  },
   async redirects() {
     return [
       {
         source: '/docs',
-        destination: '/docs/introduction',
+        destination: 'en/docs/introduction',
         permanent: false,
       },
     ]

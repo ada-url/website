@@ -15,20 +15,22 @@ export function MainNav() {
         <span className='hidden font-bold sm:inline-block'>Ada URL</span>
       </Link>
       <nav className='flex items-center space-x-6 text-sm font-medium'>
+        {/*@TODO: add localized link*/}
         <Link
-          href='/docs'
+          href='en/docs'
           className={cn(
             'transition-colors hover:text-foreground/80',
-            pathname === '/docs' ? 'text-foreground' : 'text-foreground/60',
+            pathname === 'en/docs' ? 'text-foreground' : 'text-foreground/60',
           )}
         >
           Documentation
         </Link>
+        {/*@TODO: add localized link*/}
         <Link
-          href='/docs/performance'
+          href='en/docs/performance'
           className={cn(
             'transition-colors hover:text-foreground/80',
-            pathname?.startsWith('/docs/performance') ? 'text-foreground' : 'text-foreground/60',
+            pathname?.startsWith('en/docs/performance') ? 'text-foreground' : 'text-foreground/60',
           )}
         >
           Performance

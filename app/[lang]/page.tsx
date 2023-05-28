@@ -20,7 +20,8 @@ export default function IndexPage() {
         <PageHeaderHeading>Ada URL Parser</PageHeaderHeading>
         <PageHeaderDescription>Parsing millions of URLs per second</PageHeaderDescription>
         <div className='flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10'>
-          <Link href='/docs' className={cn(buttonVariants())}>
+          {/*@TODO: use local*/}
+          <Link href='en/docs' className={cn(buttonVariants())}>
             Get Started
           </Link>
           <Link

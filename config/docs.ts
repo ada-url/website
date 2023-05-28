@@ -9,7 +9,7 @@ export const docsConfig: DocsConfig = {
   mainNav: [
     {
       title: 'Documentation',
-      href: '/docs/introduction',
+      href: 'en/docs/introduction',
     },
     {
       title: 'Playground',
@@ -27,12 +27,12 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: 'Introduction',
-          href: '/docs/introduction',
+          href: 'en/docs/introduction',
           items: [],
         },
         {
           title: 'Installation',
-          href: '/docs/installation',
+          href: 'en/docs/installation',
           items: [],
         },
       ],
@@ -42,22 +42,22 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: 'C++ Client',
-          href: '/docs/clients/cpp',
+          href: 'en/docs/clients/cpp',
           items: [],
         },
         {
           title: 'Rust client',
-          href: '/docs/clients/rust',
+          href: 'en/docs/clients/rust',
           items: [],
         },
         {
           title: 'Python client',
-          href: '/docs/clients/python',
+          href: 'en/docs/clients/python',
           items: [],
         },
         {
           title: 'Go client',
-          href: '/docs/clients/go',
+          href: 'en/docs/clients/go',
           items: [],
         },
       ],

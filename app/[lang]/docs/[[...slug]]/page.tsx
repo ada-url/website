@@ -1,7 +1,7 @@
 import { allDocs } from 'contentlayer/generated'
 import { notFound } from 'next/navigation'
 
-import './mdx.css'
+import '@/styles/mdx.css'
 import { ChevronRight } from 'lucide-react'
 import type { Metadata } from 'next'
 import Balancer from 'react-wrap-balancer'
@@ -16,16 +16,18 @@ import { absoluteUrl, cn } from '@/lib/utils'
 
 interface DocPageProps {
   params: {
+    lang: string
     slug: string[]
   }
 }
 
+ 
 async function getDocFromParams({ params }: DocPageProps) {
   const slug = params.slug?.join('/') || ''
-  const doc = allDocs.find((doc) => doc.slugAsParams === slug)
+  const doc = allDocs.find((doc) =>doc.slug === `/docs/${slug}`)
 
   if (!doc) {
-    null
+    return null
   }
 
   return doc
@@ -56,7 +58,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
   }
 }
 
-export async function generateStaticParams(): Promise<DocPageProps['params'][]> {
+export async function generateStaticParams(): Promise<{ params: DocPageProps['params'] }[]> {
   return allDocs.map((doc) => ({
     slug: doc.slugAsParams.split('/'),
   }))
@@ -64,7 +66,7 @@ export async function generateStaticParams(): Promise<DocPageProps['params'][]> 
 
 export default async function DocPage({ params }: DocPageProps) {
   const doc = await getDocFromParams({ params })
-
+  console.log(doc)
   if (!doc) {
     notFound()
   }
