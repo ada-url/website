@@ -7,9 +7,6 @@
     },
     "lint": {}
   },
-  "globalDependencies": [
-    ".env", 
-    "tsconfig.json"
-  ],
+  "globalDependencies": [".env", "tsconfig.json"],
   "globalDotEnv": [".env.local", ".env"]
 }
