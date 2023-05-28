@@ -17,7 +17,7 @@ export function MainNav() {
       <nav className='flex items-center space-x-6 text-sm font-medium'>
         {/*@TODO: add localized link*/}
         <Link
-          href='en/docs'
+          href='en/docs/introduction'
           className={cn(
             'transition-colors hover:text-foreground/80',
             pathname === 'en/docs' ? 'text-foreground' : 'text-foreground/60',
