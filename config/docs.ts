@@ -45,6 +45,11 @@ export const docsConfig: DocsConfig = {
           href: '/docs/cli',
           items: [],
         },
+        {
+          title: 'Performance',
+          href: '/docs/cli/performance',
+          items: [],
+        },
       ],
     },
     {
