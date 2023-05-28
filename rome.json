@@ -22,7 +22,7 @@
     "lineWidth": 100
   },
   "files": {
-    "ignore": ["node_modules", "public", ".next", ".contentlayer"]
+    "ignore": ["node_modules", "public", ".next", ".contentlayer", "lib/wasm"]
   },
   "javascript": {
     "formatter": {

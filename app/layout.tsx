@@ -2,6 +2,7 @@ import './globals.css'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from '@/components/ui/toaster'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { Inter } from 'next/font/google'
@@ -43,6 +44,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <SiteFooter />
           </div>
         </ThemeProvider>
+
+        <Toaster />
       </body>
     </html>
   )

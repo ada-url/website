@@ -35,7 +35,10 @@ export function MainNav() {
         </Link>
         <Link
           href='/playground'
-          className={cn('transition-colors hover:text-foreground/80 text-foreground/60')}
+          className={cn(
+            'transition-colors hover:text-foreground/80',
+            pathname?.startsWith('/playground') ? 'text-foreground' : 'text-foreground/60',
+          )}
         >
           Playground
         </Link>

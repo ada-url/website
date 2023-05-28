@@ -1,10 +1,11 @@
-import type { FC } from 'react';
+import PlaygroundForm from './form'
+import { Metadata } from 'next'
 
-// @TODO: implement in this repo
-const PlaygroundPage: FC = () => (
-    <div className="flex justify-center p-4">
-        <iframe src="https://playground.ada-url.com" width="90%" height="500px" />
-    </div>
-)
+export const metadata: Metadata = {
+  title: 'Playground',
+  description: 'A playground to test and run Ada URL parser',
+}
 
-export default PlaygroundPage
+export default function Playground() {
+  return <PlaygroundForm />
+}

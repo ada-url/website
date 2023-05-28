@@ -10,5 +10,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified,
   }))
 
-  return [{ url: siteConfig.url, lastModified }, ...documents]
+  const staticPages = [siteConfig.url, `${siteConfig.url}/playground`].map((url) => ({
+    url,
+    lastModified,
+  }))
+
+  return [...staticPages, ...documents]
 }
