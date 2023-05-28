@@ -4,7 +4,7 @@
 
 - To install `pnpm` follow the steps in https://pnpm.io/installation.
 - To build locally, run `pnpm install` in the root repository 
-- To run the website locally, run `turbo dev` in the root repository
+- To run the website locally, run `npx turbo dev` or `pnpm run dev` in the root repository and open `http://localhost:3000` in your browser.
 - To run the linter, run `pnpm run lint-fix`
 
 ## Documentation
