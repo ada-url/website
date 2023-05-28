@@ -38,6 +38,16 @@ export const docsConfig: DocsConfig = {
       ],
     },
     {
+      title: 'CLI',
+      items: [
+        {
+          title: 'Introduction',
+          href: '/docs/cli',
+          items: [],
+        },
+      ],
+    },
+    {
       title: 'Supported Languages',
       items: [
         {
