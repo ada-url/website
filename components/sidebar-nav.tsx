@@ -20,7 +20,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   return (
     <div className='w-full'>
       {items.map((item) => (
-        <div key={item.href} className={cn('pb-4')}>
+        <div key={`${item.href}-${item.title}-${item.items.length}`} className={cn('pb-4')}>
           <h4 className='mb-1 rounded-md px-2 py-1 text-sm font-semibold'>{item.title}</h4>
           {item?.items?.length && <DocsSidebarNavItems items={item.items} pathname={pathname} />}
         </div>
