@@ -1,5 +1,6 @@
 'use client'
 
+import LocalizedLink from '@/components/localizedLink'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import * as React from 'react'
@@ -15,26 +16,24 @@ export function MainNav() {
         <span className='hidden font-bold sm:inline-block'>Ada URL</span>
       </Link>
       <nav className='flex items-center space-x-6 text-sm font-medium'>
-        {/*@TODO: add localized link*/}
-        <Link
-          href='en/docs/introduction'
+        <LocalizedLink
+          href='/docs/introduction'
           className={cn(
             'transition-colors hover:text-foreground/80',
             pathname === 'en/docs' ? 'text-foreground' : 'text-foreground/60',
           )}
         >
           Documentation
-        </Link>
-        {/*@TODO: add localized link*/}
-        <Link
-          href='en/docs/performance'
+        </LocalizedLink>
+        <LocalizedLink
+          href='/docs/performance'
           className={cn(
             'transition-colors hover:text-foreground/80',
             pathname?.startsWith('en/docs/performance') ? 'text-foreground' : 'text-foreground/60',
           )}
         >
           Performance
-        </Link>
+        </LocalizedLink>
         <Link
           href='https://playground.ada-url.com'
           className={cn('transition-colors hover:text-foreground/80 text-foreground/60')}

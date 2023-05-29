@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
 import { Icons } from '@/components/icons'
+import LocalizedLink from '@/components/localizedLink'
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import { buttonVariants } from '@/components/ui/button'
 import { siteConfig } from '@/config/site'
@@ -20,10 +21,9 @@ export default function IndexPage() {
         <PageHeaderHeading>Ada URL Parser</PageHeaderHeading>
         <PageHeaderDescription>Parsing millions of URLs per second</PageHeaderDescription>
         <div className='flex w-full items-center space-x-4 pb-8 pt-4 md:pb-10'>
-          {/*@TODO: use local*/}
-          <Link href='en/docs/introduction' className={cn(buttonVariants())}>
+          <LocalizedLink href='/docs/introduction' className={cn(buttonVariants())}>
             Get Started
-          </Link>
+          </LocalizedLink>
           <Link
             target='_blank'
             rel='noreferrer'

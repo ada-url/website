@@ -1,3 +1,4 @@
+import i18nConfig from './i18n.config.mjs'
 import { withContentlayer } from 'next-contentlayer'
 
 /** @type {import('next').NextConfig} */
@@ -5,18 +6,8 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   i18n: {
-    locales: ['en', 'fr'],
-    defaultLocale: 'en',
-    localeDetection: true,
-  },
-  async redirects() {
-    return [
-      {
-        source: '/docs',
-        destination: 'en/docs/introduction',
-        permanent: false,
-      },
-    ]
+    locales: i18nConfig.locales,
+    defaultLocale: i18nConfig.defaultLocale,
   },
 }
 
