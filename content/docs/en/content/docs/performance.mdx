@@ -1,0 +1,126 @@
+---
+title: Performance
+description: How's the performance of Ada?
+---
+
+On a benchmark where we need to validate and normalize [thousands URLs found
+on popular websites](https://github.com/ada-url/url-various-datasets/tree/main/top100), 
+we find that ada can be several times faster than popular competitors (system: Apple MacBook 2022
+with LLVM 14).
+
+```bash
+Ada       ▏  188 ns/URL ███▏
+servo-url ▏  664 ns/URL ███████████▎
+cURL      ▏ 1471 ns/URL █████████████████████████
+```
+
+Ada has improved the performance of the popular JavaScript environment Node.js:
+
+> Since Node.js 18, a new URL parser dependency was added to Node.js — Ada. This addition bumped the Node.js performance when parsing URLs to a new level. Some results could reach up to an improvement of **400%**. ([State of Node.js Performance 2023](https://blog.rafaelgss.dev/state-of-nodejs-performance-2023))
+
+## Available datasets
+
+### [ada-url/url-various-datasets](https://github.com/ada-url/url-various-datasets)
+
+These are collections of URLs for benchmarking purposes. Disclaimer: This repository is developed and released for research purposes only.
+
+- `files/node_files.txt`:
+  - Contains all source files from a given Node.js snapshot as URLs (43415 URLs).
+- `files/linux_files.txt`:
+  - Contains all files from a Linux systems as URLs (169312 URLs).
+- `wikipedia/wikipedia_100k.txt`:
+  - Contains 100k URLs from a snapshot of all Wikipedia articles as URLs (March 6th 2023)
+- `others/kasztp.txt`:
+  - Contains test URLs from [URL_Shortener](https://github.com/kasztp/URL_Shortener) (MIT License) (48009 URLs).
+- `others/userbait.txt`:
+  - Contains test URLs from [phishing_sites_detector](https://github.com/userbait/phishing_sites_detector) (unknown copyright) (11430 URLs).
+- `top100/top100.txt`
+  - Contains crawl of the top visited 100 websites and extracts unique URLs (98000 URLs)
+
+### [ada-url/url-dataset](https://github.com/ada-url/url-dataset)
+
+This repository crawls the top visited 100 websites and extracts unique URLs to be used for generating a dataset of unique real-world URL examples.
+The script creates a out.txt file with each line containing a different URL.
+
+## Resources
+
+### [ada_analysis](https://github.com/ada-url/ada_analysis)
+
+#### Introduction
+
+Repository to do data analysis
+
+The file follow the CSV format. For each URL in a set, on a given system, we include the number of cycles and instructions needed to process the URL as well as many other attributes of the URL, including its protocol type, length of the path and so forth. You can open CSV files in a spreadsheet tool.
+
+The big_url_set is our default (github//ada-url/url-dataset/out.txt).
+
+We process each URL 30 times, but not in sequence. We record the time needed to generate the normalized URL (href).
+
+The benchmark done using model_bench. It only works under Linux because only under Linux can we get the fine grained precision we need to benchmark individual URL.
+
+We do not need report the timings (ns) for precision reasons. Only the number of cycles and the number of instructions are reported.
+
+### [js_url_benchmark](https://github.com/ada-url/js_url_benchmark)
+
+#### Introduction
+
+Runs the same benchmark in latest Bun, Deno as well as Node.js v16, v17, v18 and v20.
+
+## Benchmarks
+
+### JavaScript URLs
+
+Benchmarks and results are available through [js_url_benchmark](https://github.com/ada-url/js_url_benchmark)
+repository in `ada-url` organization.
+
+#### Deno 1.32.5
+
+```bash
+cpu: AMD EPYC 7262 8-Core Processor
+runtime: deno 1.32.5 (x86_64-unknown-linux-gnu)
+
+benchmark                        time (avg)             (min … max)       p75       p99      p995
+------------------------------------------------------------------- -----------------------------
+fixtures/linux_files.txt     184.46 ms/iter  (183.7 ms … 185.67 ms) 184.54 ms 185.67 ms 185.67 ms
+fixtures/kasztp.txt           59.97 ms/iter   (59.72 ms … 60.31 ms)  60.06 ms  60.31 ms  60.31 ms
+fixtures/userbait.txt         21.03 ms/iter    (20.8 ms … 21.54 ms)  21.06 ms  21.54 ms  21.54 ms
+fixtures/top100.txt          158.16 ms/iter (157.51 ms … 158.72 ms) 158.62 ms 158.72 ms 158.72 ms
+fixtures/wikipedia_100k.txt   110.1 ms/iter (109.66 ms … 110.55 ms) 110.36 ms 110.55 ms 110.55 ms
+Average URL size: 62 bytes
+Ratio of bad URLs: 0.02%
+```
+
+#### Bun 0.5.9
+
+```bash
+cpu: AMD EPYC 7262 8-Core Processor
+runtime: bun 0.5.9 (x64-linux)
+
+benchmark                        time (avg)             (min … max)       p75       p99      p995
+------------------------------------------------------------------- -----------------------------
+fixtures/linux_files.txt     101.06 ms/iter  (93.72 ms … 112.09 ms) 103.01 ms 112.09 ms 112.09 ms
+fixtures/kasztp.txt           45.11 ms/iter   (43.38 ms … 62.19 ms)  44.78 ms  62.19 ms  62.19 ms
+fixtures/userbait.txt         13.46 ms/iter   (12.77 ms … 27.97 ms)  13.26 ms  27.97 ms  27.97 ms
+fixtures/top100.txt          122.87 ms/iter (120.98 ms … 134.54 ms) 122.85 ms 134.54 ms 134.54 ms
+fixtures/wikipedia_100k.txt   69.06 ms/iter      (62.78 ms … 87 ms)  73.06 ms     87 ms     87 ms
+Average URL size: 61 bytes
+Ratio of bad URLs: 0.02%
+```
+
+#### Node.js v20.0.0
+
+
+```bash
+cpu: AMD EPYC 7262 8-Core Processor
+runtime: node v20.0.0 (x64-linux)
+
+benchmark                        time (avg)             (min … max)       p75       p99      p995
+------------------------------------------------------------------- -----------------------------
+fixtures/linux_files.txt      92.01 ms/iter   (91.27 ms … 92.66 ms)  92.35 ms  92.66 ms  92.66 ms
+fixtures/kasztp.txt              30 ms/iter   (29.68 ms … 30.36 ms)  30.16 ms  30.36 ms  30.36 ms
+fixtures/userbait.txt          8.33 ms/iter     (8.17 ms … 9.79 ms)   8.36 ms   9.79 ms   9.79 ms
+fixtures/top100.txt           67.44 ms/iter      (67 ms … 68.93 ms)  67.54 ms  68.93 ms  68.93 ms
+fixtures/wikipedia_100k.txt   56.98 ms/iter   (56.65 ms … 57.65 ms)  57.14 ms  57.65 ms  57.65 ms
+Average URL size: 62 bytes
+Ratio of bad URLs: 0.03%
+```

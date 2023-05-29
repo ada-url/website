@@ -15,6 +15,7 @@ import Balancer from 'react-wrap-balancer'
 interface DocPageProps {
   params: {
     slug: string[]
+    lang?: string
   }
 }
 
