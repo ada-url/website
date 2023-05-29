@@ -1,10 +1,12 @@
 import './globals.css'
+import { Analytics } from '@/components/analytics'
 import { SiteFooter } from '@/components/site-footer'
 import { SiteHeader } from '@/components/site-header'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
+import { absoluteUrl } from '@/lib/utils'
 import { Inter } from 'next/font/google'
 import type { PropsWithChildren } from 'react'
 
@@ -31,6 +33,27 @@ export const metadata = {
     { media: '(prefers-color-scheme: light)', color: 'white' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+  },
+  metadataBase: new URL(siteConfig.url),
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: absoluteUrl('/site.webmanifest'),
+  category: 'technology',
 }
 
 export default function RootLayout({ children }: PropsWithChildren) {
@@ -46,6 +69,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         </ThemeProvider>
 
         <Toaster />
+        <Analytics />
       </body>
     </html>
   )

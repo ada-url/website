@@ -162,12 +162,12 @@ export default function ParsingResult(props: WASMResponse) {
           <TabsTrigger value='raw'>Raw Output</TabsTrigger>
         </TabsList>
         <TabsContent value='diagram'>
-          <pre className='bg-neutral-900 rounded-sm text-neutral-200 p-4 font-mono'>
+          <pre className='bg-neutral-900 rounded-sm text-neutral-200 p-4 font-mono overflow-x-auto'>
             {getDiagram(props)}
           </pre>
         </TabsContent>
         <TabsContent value='raw'>
-          <pre className='bg-neutral-900 rounded-sm text-neutral-200 p-4 font-mono'>
+          <pre className='bg-neutral-900 rounded-sm text-neutral-200 p-4 font-mono overflow-x-auto'>
             {JSON.stringify(props, null, 2)}
           </pre>
         </TabsContent>
