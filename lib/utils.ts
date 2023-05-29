@@ -16,5 +16,7 @@ export function formatDate(input: string | number): string {
 }
 
 export function absoluteUrl(path: string) {
-  return `${siteConfig.url}${path}`
+  const base = new URL(siteConfig.url)
+  base.pathname = path
+  return base.href
 }
