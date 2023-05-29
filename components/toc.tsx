@@ -44,11 +44,12 @@ function useActiveItem(itemIds: string[]) {
   React.useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        for (const entry of entries) {
           if (entry.isIntersecting) {
             setActiveId(entry.target.id)
+            break
           }
-        })
+        }
       },
       { rootMargin: '0% 0% -80% 0%' },
     )
@@ -84,7 +85,7 @@ function Tree({ tree, level = 1, activeItem }: TreeProps) {
     <ul className={cn('m-0 list-none', { 'pl-4': level !== 1 })}>
       {tree.items.map((item) => {
         return (
-          <li key={item.href} className={cn('mt-0 pt-2')}>
+          <li key={item.url} className={cn('mt-0 pt-2')}>
             <a
               href={item.url}
               className={cn(
