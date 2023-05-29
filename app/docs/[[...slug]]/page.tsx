@@ -8,9 +8,11 @@ import Balancer from 'react-wrap-balancer'
 
 import { Mdx } from '@/components/mdx-components'
 import { DocsPager } from '@/components/pager'
+import { imageSize } from '@/components/social-image'
 import { DashboardTableOfContents } from '@/components/toc'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
+import { siteConfig } from '@/config/site'
 import { getTableOfContents } from '@/lib/toc'
 import { absoluteUrl, cn } from '@/lib/utils'
 
@@ -20,19 +22,20 @@ interface DocPageProps {
   }
 }
 
-async function getDocFromParams({ params }: DocPageProps) {
+function getDocFromParams({ params }: DocPageProps) {
   const slug = params.slug?.join('/') || ''
   const doc = allDocs.find((doc) => doc.slugAsParams === slug)
 
   if (!doc) {
-    null
+    return null
   }
 
   return doc
 }
 
-export async function generateMetadata({ params }: DocPageProps): Promise<Metadata> {
-  const doc = await getDocFromParams({ params })
+export function generateMetadata({ params }: DocPageProps): Metadata {
+  const slug = params.slug?.join('/') || ''
+  const doc = getDocFromParams({ params })
 
   if (!doc) {
     return {}
@@ -45,13 +48,26 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
       title: doc.title,
       description: doc.description,
       type: 'article',
-      url: absoluteUrl(doc.slug),
+      url: doc.slug,
+      images: [
+        {
+          url: `/api/opengraph-image?slug=${slug}`,
+          ...imageSize,
+          alt: siteConfig.name,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: doc.title,
       description: doc.description,
-      images: [],
+      images: [
+        {
+          url: `/api/opengraph-image?slug=${slug}`,
+          ...imageSize,
+          alt: siteConfig.name,
+        },
+      ],
     },
   }
 }
