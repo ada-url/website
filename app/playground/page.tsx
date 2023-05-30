@@ -1,6 +1,6 @@
 import PlaygroundForm from './form'
-import { absoluteUrl } from '@/lib/utils'
 import { Metadata } from 'next'
+import { Suspense } from 'react'
 
 const title = 'URL Parser Playground'
 const description =
@@ -23,5 +23,9 @@ export const metadata: Metadata = {
 }
 
 export default function Playground() {
-  return <PlaygroundForm />
+  return (
+    <Suspense>
+      <PlaygroundForm />
+    </Suspense>
+  )
 }
