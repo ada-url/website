@@ -1,5 +1,9 @@
 import { Icons } from '@/components/icons'
+import { absoluteUrl } from '@/lib/utils'
 import { ImageResponse } from 'next/server'
+
+const path = absoluteUrl('/fonts/Inter-SemiBold.woff')
+export const fontBuffer = fetch(path).then((res) => res.arrayBuffer())
 
 export const imageSize = {
   width: 1200,

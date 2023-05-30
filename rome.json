@@ -22,7 +22,7 @@
     "lineWidth": 100
   },
   "files": {
-    "ignore": ["node_modules", "public", ".next", ".contentlayer", "lib/wasm"]
+    "ignore": ["node_modules", "public", ".next", ".contentlayer", "lib/wasm", ".vercel"]
   },
   "javascript": {
     "formatter": {

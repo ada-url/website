@@ -1,11 +1,7 @@
-import { SocialImage } from '@/components/social-image'
-import { absoluteUrl } from '@/lib/utils'
+import { SocialImage, fontBuffer } from '@/components/social-image'
 import { allDocs } from 'contentlayer/generated'
 
 export const runtime = 'edge'
-
-const path = absoluteUrl('/fonts/Inter-SemiBold.woff')
-const fontBuffer = fetch(path).then((res) => res.arrayBuffer())
 
 export async function GET(request: Request) {
   const url = new URL(request.url)

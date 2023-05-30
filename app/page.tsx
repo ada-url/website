@@ -1,6 +1,5 @@
 import { BenchmarkChart } from '@/components/charts/benchmarks'
 import { Icons } from '@/components/icons'
-import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import { buttonVariants } from '@/components/ui/button'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
