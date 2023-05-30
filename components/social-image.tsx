@@ -3,18 +3,16 @@ import { absoluteUrl } from '@/lib/utils'
 import { ImageResponse } from 'next/server'
 
 const path = absoluteUrl('/fonts/Inter-SemiBold.woff')
-export const fontBuffer = fetch(path).then((res) => res.arrayBuffer())
+const fontBuffer = fetch(path).then((res) => res.arrayBuffer())
 
 export const imageSize = {
   width: 1200,
   height: 630,
 }
 
-type Props = {
-  font: ArrayBuffer | Buffer
-  title: string
-}
-export async function SocialImage({ font, title }: Props) {
+type Props = { title: string }
+export async function SocialImage({ title }: Props) {
+  const font = await fontBuffer
   return new ImageResponse(
     <div tw='bg-black h-full w-full flex flex-col items-center justify-center'>
       <div tw='flex items-center justify-center'>
