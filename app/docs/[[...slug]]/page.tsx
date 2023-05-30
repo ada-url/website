@@ -14,15 +14,15 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
 import { siteConfig } from '@/config/site'
 import { getTableOfContents } from '@/lib/toc'
-import { absoluteUrl, cn } from '@/lib/utils'
+import { cn } from '@/lib/utils'
 
-interface DocPageProps {
+type Props = {
   params: {
     slug: string[]
   }
 }
 
-function getDocFromParams({ params }: DocPageProps) {
+function getDocFromParams({ params }: Props) {
   const slug = params.slug?.join('/') || ''
   const doc = allDocs.find((doc) => doc.slugAsParams === slug)
 
@@ -33,7 +33,7 @@ function getDocFromParams({ params }: DocPageProps) {
   return doc
 }
 
-export function generateMetadata({ params }: DocPageProps): Metadata {
+export function generateMetadata({ params }: Props): Metadata {
   const slug = params.slug?.join('/') || ''
   const doc = getDocFromParams({ params })
 
@@ -72,13 +72,13 @@ export function generateMetadata({ params }: DocPageProps): Metadata {
   }
 }
 
-export async function generateStaticParams(): Promise<DocPageProps['params'][]> {
+export async function generateStaticParams(): Promise<Props['params'][]> {
   return allDocs.map((doc) => ({
     slug: doc.slugAsParams.split('/'),
   }))
 }
 
-export default async function DocPage({ params }: DocPageProps) {
+export default async function DocPage({ params }: Props) {
   const doc = await getDocFromParams({ params })
 
   if (!doc) {

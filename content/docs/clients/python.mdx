@@ -3,7 +3,12 @@ title: Python
 description: How to install and use Ada in a Python project
 ---
 
-## Installing pre-built binary wheels
+Ada has a Python client available on [Github](https://github.com/ada-url/ada-python).
+For more details on the `ada_url` API, see the documentation at [Read the Docs](https://ada-url.readthedocs.io/en/latest/).
+
+## Installation
+
+### Installing pre-built binary wheels
 
 The easiest way to get started is to install `ada-url` from [PyPI](https://pypi.org/project/ada-url/).
 
@@ -13,7 +18,7 @@ From within your virtual environment, run:
 python3 -m pip install ada-url 
 ```
 
-## Installing from source
+### Installing from source
 
 The `Makefile` in the [project root](https://github.com/ada-url/ada-python) will build a package for installation on your own machine.
 
@@ -69,7 +74,3 @@ It also exposes some higher level functions for analyzing and manipulating URLs:
     'https://example.org/dir/child.txt', '../parent.txt'
 )
 ```
-
-## API documentation
-
-For more details on the `ada_url` API, see the documentation at [Read the Docs](https://ada-url.readthedocs.io/en/latest/).
