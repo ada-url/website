@@ -7,6 +7,7 @@ type Props = {
   href: string | URL
   children: ReactNode
   className?: string
+  target?: string
 }
 
 const LocalizedLink: FC<Props> = ({ href, children, className }) => {
@@ -14,7 +15,11 @@ const LocalizedLink: FC<Props> = ({ href, children, className }) => {
   const path = `/${params.lang}${href}`
 
   return (
-    <Link href={path} className={className}>
+    <Link
+      href={path}
+      className={className}
+      target={href.toString().startsWith('http') ? '_blank' : undefined}
+    >
       {children}
     </Link>
   )

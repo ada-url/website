@@ -57,6 +57,7 @@ export async function generateMetadata({ params }: DocPageProps): Promise<Metada
 }
 
 export async function generateStaticParams(): Promise<DocPageProps['params'][]> {
+  //@TODO: add fallback for lang
   return allDocs.map((doc) => ({
     slug: doc.slugAsParams.split('/'),
   }))

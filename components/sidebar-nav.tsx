@@ -1,10 +1,10 @@
 'use client'
 
 import { SidebarNavItem } from '@/types/nav'
-import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { cn } from '@/lib/utils'
+import LocalizedLink from './localizedLink'
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[]
@@ -42,7 +42,7 @@ export function DocsSidebarNavItems({ items, pathname }: DocsSidebarNavItemsProp
     <div className='grid grid-flow-row auto-rows-max text-sm'>
       {items.map((item) =>
         item.href && !item.disabled ? (
-          <Link
+          <LocalizedLink
             key={item.href}
             href={item.href}
             className={cn(
@@ -59,7 +59,7 @@ export function DocsSidebarNavItems({ items, pathname }: DocsSidebarNavItemsProp
                 {item.label}
               </span>
             )}
-          </Link>
+          </LocalizedLink>
         ) : (
           <span
             key={item.href}
