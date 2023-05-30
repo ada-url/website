@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import {
@@ -7,13 +7,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import type { FC } from 'react'
-import i18nConfig, {getLocaleName} from '@/i18n.config.mjs'
+import i18nConfig, { getLocaleName } from '@/i18n.config.mjs'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation'
+import type { FC } from 'react'
 
 const LangSwitch: FC = () => {
-
   // @TODO: use nextjs features to get current route
   const currentRouteLocalized = (locale: string) => {
     const pathname = usePathname()
@@ -21,7 +20,7 @@ const LangSwitch: FC = () => {
     path[1] = locale
     return path.join('/')
   }
-  
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -34,14 +33,10 @@ const LangSwitch: FC = () => {
       <DropdownMenuContent align='end'>
         {i18nConfig.locales.map((locale) => (
           <Link href={currentRouteLocalized(locale)}>
-          <DropdownMenuItem key={locale}>
-                {getLocaleName(locale)}
-          </DropdownMenuItem>
+            <DropdownMenuItem key={locale}>{getLocaleName(locale)}</DropdownMenuItem>
           </Link>
-        ))
-        }
-        <DropdownMenuItem>
-        </DropdownMenuItem>
+        ))}
+        <DropdownMenuItem></DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

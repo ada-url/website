@@ -1,10 +1,9 @@
 'use client'
 
+import LocalizedLink from './localizedLink'
+import { cn } from '@/lib/utils'
 import { SidebarNavItem } from '@/types/nav'
 import { usePathname } from 'next/navigation'
-
-import { cn } from '@/lib/utils'
-import LocalizedLink from './localizedLink'
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[]

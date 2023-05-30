@@ -12,6 +12,7 @@ import {
   HelpCircle,
   type Icon as LucideIcon,
   Image,
+  Languages,
   Laptop,
   Loader2,
   LucideProps,
@@ -25,7 +26,6 @@ import {
   Twitter,
   User,
   X,
-  Languages,
 } from 'lucide-react'
 
 export type Icon = LucideIcon
