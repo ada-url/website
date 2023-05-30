@@ -1,10 +1,11 @@
 import { SocialImage, imageSize } from '@/components/social-image'
+import { absoluteUrl } from '@/lib/utils'
 
 export const runtime = 'edge'
 export const contentType = 'image/png'
 export const size = imageSize
 
-const path = new URL('../public/fonts/Inter-SemiBold.woff', import.meta.url)
+const path = absoluteUrl('/fonts/Inter-SemiBold.woff')
 const fontBuffer = fetch(path).then((res) => res.arrayBuffer())
 
 export default async function Image() {
