@@ -26,7 +26,7 @@ export default function IndexPage() {
               Parse millions of URLs per second
             </p>
             <div className='space-x-4 flex flex-row'>
-              <Link href='/docs/interaction' className={cn(buttonVariants({ size: 'lg' }))}>
+              <Link href='/docs/introduction' className={cn(buttonVariants({ size: 'lg' }))}>
                 <Icons.link className='mr-2 h-4 w-4 hidden sm:visible' />
                 Get Started
               </Link>
