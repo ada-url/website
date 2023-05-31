@@ -16,8 +16,6 @@ import { siteConfig } from '@/config/site'
 import { getTableOfContents } from '@/lib/toc'
 import { cn } from '@/lib/utils'
 
-export const runtime = 'edge'
-
 type Props = {
   params: {
     slug: string[]
