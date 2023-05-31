@@ -39,13 +39,13 @@ Use the following code to run and test Ada.
 #include "ada.h"
 #include <iostream>
 
-  int main(int , char *[]) {
-    ada::result<ada::url_aggregator> url = ada::parse<ada::url_aggregator>("https://www.google.com");
-    url->set_protocol("http");
-    std::cout << url->get_protocol() << std::endl;
-    std::cout << url->get_host() << std::endl;
-    return EXIT_SUCCESS;
-  }
+int main(int , char *[]) {
+  ada::result<ada::url_aggregator> url = ada::parse<ada::url_aggregator>("https://www.google.com");
+  url->set_protocol("http");
+  std::cout << url->get_protocol() << std::endl;
+  std::cout << url->get_host() << std::endl;
+  return EXIT_SUCCESS;
+}
 ```
 
 ### Parsing & Validation

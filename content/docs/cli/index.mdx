@@ -23,9 +23,9 @@ The adaparse command tool takes URL strings (ASCII/UTF-8) and it validates, norm
 adaparse "http://www.google.com"
 ```
 
-Output:
+**Output:**
 
-```
+```text
 http://www.google.com
 ```
 
@@ -35,9 +35,9 @@ http://www.google.com
 adaparse -d http://www.google.com/bal\?a\=\=11\#fddfds
 ```
 
-Output:
+**Output:**
 
-```
+```text
 http://www.google.com/bal?a==11#fddfds [38 bytes]
 | |             |   |     |
 | |             |   |     `------ hash_start
@@ -59,12 +59,12 @@ Given a list of URLs, one by line, we may query the normalized URL string (`href
 cat dragonball_url.txt | adaparse --get href
 ```
 
-Output:
-```
+**Output:**
+
+```text
 http://www.goku.com
 http://www.vegeta.com
 http://www.gohan.com
-
 ```
 
 Our tool supports the passing of arguments to each URL in said file so
@@ -76,8 +76,9 @@ or the hostname:
 cat dragonball_url.txt  | adaparse -g host
 ```
 
-Output:
-```
+**Output:**
+
+```text
 www.goku.com
 www.vegeta.com
 www.gohan.com
@@ -94,8 +95,9 @@ The benchmark flag can be used to output the time it takes to process piped inpu
 cat wikipedia_100k.txt | adaparse -b
 ```
 
-Output:
-```
+**Output:**
+
+```text
 Invalid URL: 1968:_Die_Kinder_der_Diktatur
 Invalid URL: 58957:_The_Bluegrass_Guitar_Collection
 Invalid URL: 650luc:_Gangsta_Grillz
@@ -132,17 +134,19 @@ adaparse -p wikipedia_top_100_txt
 You may also combine different flags together. E.g. Say one wishes to extract only the host from URLs stored in wikipedia.txt and output it to the test_write.txt file:
 
 ```bash
-adaparse" -p wikipedia_top100.txt -o test_write.txt -g host -b
+adaparse -p wikipedia_top100.txt -o test_write.txt -g host -b
 ```
 
-Output:
-```bash
+**Output:**
+
+```text
 read 5209265 bytes in 26737131 ns using 100000 lines, total_bytes is 5209265 used 160 loads
 0.19483260937757307 GB/s(base)
 ```
 
 Content of test_write.txt:
-```bash
+
+```text
 (---snip---)
 en.wikipedia.org
 en.wikipedia.org

@@ -70,11 +70,29 @@ Run the following commands to compile and build Ada locally.
 
 Windows users need additional flags to specify the build configuration, e.g. `--config Release`.
 
+### Docker
+
 The project can also be built via docker using default docker file of repository with following commands.
 
-```bash
-docker build -t ada-builder . && docker run --rm -it -v ${PWD}:/repo ada-builder
-```
+<Steps>
+
+  ### Build
+
+  Build and prepare the docker file
+
+  ```bash
+  docker build -t ada-builder
+  ```
+
+  ### Run
+
+  Run the tests
+
+  ```bash
+  docker run --rm -it -v ${PWD}:/repo ada-builder
+  ```
+
+</Steps>
 
 ### Amalgamation
 

@@ -42,6 +42,8 @@ From within your virtual environment, run:
 
 ## Usage
 
+### URL class
+
 The `ada_url` package defines a `URL` class that can parse URLs:
 
 ```python3
@@ -53,7 +55,11 @@ The `ada_url` package defines a `URL` class that can parse URLs:
 '/path/file.txt'
 ```
 
+### High-level functions
+
 It also exposes some higher level functions for analyzing and manipulating URLs:
+
+#### parse_url
 
 ```python3
 >>> import ada_url
@@ -70,7 +76,13 @@ It also exposes some higher level functions for analyzing and manipulating URLs:
     'search': '?q=1',
     'hash': '#2'
 }
+```
+
+#### join_url
+
+```python3
+>>> import ada_url
 >>> ada_url.join_url(
-    'https://example.org/dir/child.txt', '../parent.txt'
+'https://example.org/dir/child.txt', '../parent.txt'
 )
 ```
