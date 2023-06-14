@@ -167,7 +167,7 @@ export function Mdx({ code }: MdxProps) {
 
   return (
     <div className='mdx'>
-      <Component components={components} />
+      <Component components={components as any} />
     </div>
   )
 }

@@ -15,9 +15,7 @@ let wasm: {
   parse: (url: string) => WASMResponse & { delete: VoidFunction }
 }
 
-// rome-ignore lint/suspicious/noExplicitAny: unnecessary
 function toJS(obj: Record<string, any>): any {
-  // rome-ignore lint/suspicious/noExplicitAny: unnecessary
   const result: Record<string, any> = {}
   for (const key of Object.keys(obj.__proto__)) {
     result[key] = typeof obj[key] === 'object' ? toJS(obj[key]) : obj[key]
