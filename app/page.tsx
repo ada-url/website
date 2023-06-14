@@ -39,10 +39,7 @@ export default function IndexPage() {
               GitHub
             </Link>
           </div>
-          <Link
-            href='/playground'
-            className='rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium'
-          >
+          <Link href='/playground' className='rounded-2xl bg-muted px-4 py-1.5 text-sm font-medium'>
             Try it on the playground
           </Link>
         </div>
