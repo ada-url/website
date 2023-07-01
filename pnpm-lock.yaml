@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@radix-ui/react-accordion':
     specifier: ^1.1.2
@@ -32,8 +36,8 @@ dependencies:
     specifier: ^1.1.4
     version: 1.1.4(@types/react-dom@18.2.5)(@types/react@18.2.12)(react-dom@18.2.0)(react@18.2.0)
   '@types/node':
-    specifier: 20.3.1
-    version: 20.3.1
+    specifier: 20.3.3
+    version: 20.3.3
   '@types/react':
     specifier: 18.2.12
     version: 18.2.12
@@ -578,7 +582,7 @@ packages:
     engines: {node: ^8.13.0 || >=10.10.0}
     dependencies:
       '@grpc/proto-loader': 0.7.7
-      '@types/node': 20.3.1
+      '@types/node': 20.3.3
     dev: false
 
   /@grpc/proto-loader@0.7.7:
@@ -1851,8 +1855,8 @@ packages:
   /@types/ms@0.7.31:
     resolution: {integrity: sha512-iiUgKzV9AuaEkZqkOLDIvlQiL6ltuZd9tGcW3gwpnX8JbuiuhFlEGmmFXEXkN50Cvq7Os88IY2v0dkDqXYWVgA==}
 
-  /@types/node@20.3.1:
-    resolution: {integrity: sha512-EhcH/wvidPy1WeML3TtYFGR83UzjxeWRen9V402T8aUGYsCHOmfoisV3ZSg03gAFIbLq8TnWOJ0f4cALtnSEUg==}
+  /@types/node@20.3.3:
+    resolution: {integrity: sha512-wheIYdr4NYML61AjC8MKj/2jrR/kDQri/CIpVoZwldwhnIrD/j9jIU5bJ8yBKuB2VhpFV7Ab6G2XkBjv9r9Zzw==}
     dev: false
 
   /@types/parse5@6.0.3:
@@ -3857,7 +3861,7 @@ packages:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 20.3.1
+      '@types/node': 20.3.3
       long: 5.2.3
     dev: false
 
