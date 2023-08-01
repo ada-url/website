@@ -48,7 +48,7 @@
   "devDependencies": {
     "@types/unist": "^2.0.6",
     "markdown-wasm": "^1.2.0",
-    "mdast-util-toc": "^6.1.1",
+    "mdast-util-toc": "^7.0.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-pretty-code": "^0.10.0",
     "rehype-slug": "^5.1.0",
