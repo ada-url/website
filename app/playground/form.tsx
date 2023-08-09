@@ -85,7 +85,7 @@ export default function PlaygroundForm() {
           </Button>
         </form>
 
-        {output !== undefined && output.result !== 'fail' ? <ParsingResult {...output} /> : null}
+        {output !== undefined ? <ParsingResult {...output} /> : null}
       </div>
     </div>
   )
