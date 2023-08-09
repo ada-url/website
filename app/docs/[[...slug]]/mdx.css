@@ -46,7 +46,7 @@
   @apply bg-muted;
 }
 
-[data-rehype-pretty-code-fragment] .line-highlighted span {
+[data-rehype-pretty-code-fragment] .line--highlighted span {
   @apply relative;
 }
 
