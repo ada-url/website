@@ -10,7 +10,6 @@ import {
   File,
   FileText,
   HelpCircle,
-  type Icon as LucideIcon,
   Image,
   Laptop,
   Link,
@@ -27,8 +26,6 @@ import {
   User,
   X,
 } from 'lucide-react'
-
-export type Icon = LucideIcon
 
 export const Icons = {
   close: X,
