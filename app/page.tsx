@@ -54,7 +54,7 @@ export default function IndexPage() {
             On a benchmark where we need to validate and normalize{' '}
             <Link
               href='https://github.com/ada-url/url-various-datasets/tree/main/top100'
-              className='text-black font-bold underline'
+              className='text-black dark:text-white font-bold underline'
             >
               thousands of URLs found on popular websites
             </Link>{' '}
