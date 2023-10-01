@@ -21,7 +21,7 @@
     "@radix-ui/react-tabs": "^1.0.4",
     "@radix-ui/react-toast": "^1.1.5",
     "@types/node": "20.5.7",
-    "@types/react": "18.2.21",
+    "@types/react": "18.2.24",
     "@types/react-dom": "18.2.8",
     "@vercel/analytics": "^1.0.2",
     "autoprefixer": "10.4.16",
