@@ -1,6 +1,6 @@
 'use client'
 
-import { SidebarNavItem } from '@/types/nav'
+import type { SidebarNavItem } from '@/types/nav'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -18,10 +18,10 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
   }
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       {items.map((item) => (
         <div key={`${item.href}-${item.title}-${item.items.length}`} className={cn('pb-4')}>
-          <h4 className='mb-1 rounded-md px-2 py-1 text-sm font-semibold'>{item.title}</h4>
+          <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">{item.title}</h4>
           {item?.items?.length && <DocsSidebarNavItems items={item.items} pathname={pathname} />}
         </div>
       ))}
@@ -39,7 +39,7 @@ export function DocsSidebarNavItems({ items, pathname }: DocsSidebarNavItemsProp
     return null
   }
   return (
-    <div className='grid grid-flow-row auto-rows-max text-sm'>
+    <div className="grid grid-flow-row auto-rows-max text-sm">
       {items.map((item) =>
         item.href && !item.disabled ? (
           <Link
@@ -55,7 +55,7 @@ export function DocsSidebarNavItems({ items, pathname }: DocsSidebarNavItemsProp
           >
             {item.title}
             {item.label && (
-              <span className='ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline'>
+              <span className="ml-2 rounded-md bg-[#adfa1d] px-1.5 py-0.5 text-xs leading-none text-[#000000] no-underline group-hover:no-underline">
                 {item.label}
               </span>
             )}
@@ -70,7 +70,7 @@ export function DocsSidebarNavItems({ items, pathname }: DocsSidebarNavItemsProp
           >
             {item.title}
             {item.label && (
-              <span className='ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs leading-none text-muted-foreground no-underline group-hover:no-underline'>
+              <span className="ml-2 rounded-md bg-muted px-1.5 py-0.5 text-xs leading-none text-muted-foreground no-underline group-hover:no-underline">
                 {item.label}
               </span>
             )}

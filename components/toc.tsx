@@ -4,7 +4,7 @@
 import * as React from 'react'
 
 import { useMounted } from '@/lib/hooks/use-mounted'
-import { TableOfContents } from '@/lib/toc'
+import type { TableOfContents } from '@/lib/toc'
 import { cn } from '@/lib/utils'
 
 interface TocProps {
@@ -31,8 +31,8 @@ export function DashboardTableOfContents({ toc }: TocProps) {
   }
 
   return (
-    <div className='space-y-2'>
-      <p className='font-medium'>On This Page</p>
+    <div className="space-y-2">
+      <p className="font-medium">On This Page</p>
       <Tree tree={toc} activeItem={activeHeading} />
     </div>
   )
@@ -54,20 +54,24 @@ function useActiveItem(itemIds: string[]) {
       { rootMargin: '0% 0% -80% 0%' },
     )
 
-    itemIds?.forEach((id) => {
-      const element = document.getElementById(id)
-      if (element) {
-        observer.observe(element)
-      }
-    })
-
-    return () => {
-      itemIds?.forEach((id) => {
+    if (itemIds) {
+      for (const id of itemIds) {
         const element = document.getElementById(id)
         if (element) {
-          observer.unobserve(element)
+          observer.observe(element)
         }
-      })
+      }
+    }
+
+    return () => {
+      if (itemIds) {
+        for (const id of itemIds) {
+          const element = document.getElementById(id)
+          if (element) {
+            observer.unobserve(element)
+          }
+        }
+      }
     }
   }, [itemIds])
 

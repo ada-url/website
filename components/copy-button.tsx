@@ -17,11 +17,11 @@ export function CopyButton({ value, className, src, ...props }: CopyButtonProps)
     setTimeout(() => {
       setHasCopied(false)
     }, 2000)
-  }, [hasCopied])
+  }, [])
 
   return (
     <button
-      type='button'
+      type="button"
       className={cn(
         'relative z-20 inline-flex h-6 w-6 items-center justify-center rounded-md border bg-background text-sm font-medium transition-all hover:bg-muted focus:outline-none',
         className,
@@ -32,8 +32,8 @@ export function CopyButton({ value, className, src, ...props }: CopyButtonProps)
       }}
       {...props}
     >
-      <span className='sr-only'>Copy</span>
-      {hasCopied ? <Icons.check className='h-3 w-3' /> : <Icons.copy className='h-3 w-3' />}
+      <span className="sr-only">Copy</span>
+      {hasCopied ? <Icons.check className="h-3 w-3" /> : <Icons.copy className="h-3 w-3" />}
     </button>
   )
 }

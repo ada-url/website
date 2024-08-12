@@ -1,5 +1,5 @@
-import { NavItem, NavItemWithChildren } from '@/types/nav'
-import { Doc } from 'contentlayer/generated'
+import type { NavItem, NavItemWithChildren } from '@/types/nav'
+import type { Doc } from 'contentlayer/generated'
 import Link from 'next/link'
 
 import { Icons } from '@/components/icons'
@@ -18,17 +18,17 @@ export function DocsPager({ doc }: DocsPagerProps) {
   }
 
   return (
-    <div className='flex flex-row items-center justify-between'>
+    <div className="flex flex-row items-center justify-between">
       {pager?.prev?.href && (
         <Link href={pager.prev.href} className={buttonVariants({ variant: 'outline' })}>
-          <Icons.chevronLeft className='mr-2 h-4 w-4' />
+          <Icons.chevronLeft className="mr-2 h-4 w-4" />
           {pager.prev.title}
         </Link>
       )}
       {pager?.next?.href && (
         <Link href={pager.next.href} className={buttonVariants({ variant: 'outline' })}>
           {pager.next.title}
-          <Icons.chevronRight className='ml-2 h-4 w-4' />
+          <Icons.chevronRight className="ml-2 h-4 w-4" />
         </Link>
       )}
     </div>

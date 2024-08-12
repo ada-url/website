@@ -50,7 +50,8 @@ function getItems(node, current): Items {
     current.items = node.children.map((i) => getItems(i, {}))
 
     return current
-  } else if (node.type === 'listItem') {
+  }
+  if (node.type === 'listItem') {
     const heading = getItems(node.children[0], {})
 
     if (node.children.length > 1) {

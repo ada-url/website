@@ -13,10 +13,10 @@ function BarLabel({ x, y, width, value }: BarLabelProps) {
     <text
       x={x + width / 2}
       y={y}
-      fill='#666'
-      textAnchor='middle'
+      fill="#666"
+      textAnchor="middle"
       dy={-6}
-      className='text-sm font-bold'
+      className="text-sm font-bold"
     >{`${value}ns`}</text>
   )
 }
@@ -30,19 +30,19 @@ export type BenchmarkChartProps = {
 
 export function BenchmarkChart({ data }: BenchmarkChartProps) {
   return (
-    <ResponsiveContainer width='100%' height='100%'>
-      <BarChart width={150} height={40} data={data} layout='vertical' barSize={40}>
+    <ResponsiveContainer width="100%" height="100%">
+      <BarChart width={150} height={40} data={data} layout="vertical" barSize={40}>
         <Bar
-          dataKey='value'
-          fill='#8884d8'
+          dataKey="value"
+          fill="#8884d8"
           radius={[0, 10, 10, 0]}
           label={BarLabel}
-          legendType='none'
-          unit='ns'
+          legendType="none"
+          unit="ns"
         />
-        <XAxis type='number' hide />
-        <YAxis type='category' width={150} dataKey='name' />
-        <CartesianGrid stroke='#ccc' strokeDasharray='5' horizontal={false} />
+        <XAxis type="number" hide />
+        <YAxis type="category" width={150} dataKey="name" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5" horizontal={false} />
       </BarChart>
     </ResponsiveContainer>
   )

@@ -1,7 +1,7 @@
 'use client'
 
 import { PanelRightClose } from 'lucide-react'
-import Link, { LinkProps } from 'next/link'
+import Link, { type LinkProps } from 'next/link'
 import { useRouter } from 'next/navigation'
 import * as React from 'react'
 
@@ -18,19 +18,19 @@ export function MobileNav() {
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button
-          variant='ghost'
-          className='mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden'
+          variant="ghost"
+          className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
         >
-          <PanelRightClose className='h-6 w-6' />
-          <span className='sr-only'>Toggle Menu</span>
+          <PanelRightClose className="h-6 w-6" />
+          <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
-      <SheetContent size='xl' position='left' className='pr-0'>
-        <MobileLink href='/' className='flex items-center' onOpenChange={setOpen}>
-          <span className='font-bold'>Ada URL</span>
+      <SheetContent size="xl" position="left" className="pr-0">
+        <MobileLink href="/" className="flex items-center" onOpenChange={setOpen}>
+          <span className="font-bold">Ada URL</span>
         </MobileLink>
-        <ScrollArea className='my-4 h-[calc(100vh-8rem)] pb-10 pl-6'>
-          <div className='flex flex-col space-y-3'>
+        <ScrollArea className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
+          <div className="flex flex-col space-y-3">
             {docsConfig.mainNav.map((item) => (
               <MobileLink
                 key={item.href ?? item.title}
@@ -41,10 +41,10 @@ export function MobileNav() {
               </MobileLink>
             ))}
           </div>
-          <div className='flex flex-col space-y-2'>
+          <div className="flex flex-col space-y-2">
             {docsConfig.sidebarNav.map((item) => (
-              <div key={item.href ?? item.title} className='flex flex-col space-y-3 pt-6'>
-                <h4 className='font-medium'>{item.title}</h4>
+              <div key={item.href ?? item.title} className="flex flex-col space-y-3 pt-6">
+                <h4 className="font-medium">{item.title}</h4>
                 {item?.items?.length &&
                   item.items.map((item) => (
                     <React.Fragment key={item.href}>

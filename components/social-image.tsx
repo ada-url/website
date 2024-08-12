@@ -1,6 +1,6 @@
 import { Icons } from '@/components/icons'
 import { absoluteUrl } from '@/lib/utils'
-import { ImageResponse } from 'next/server'
+import { ImageResponse } from 'next/og'
 
 const path = absoluteUrl('/fonts/Inter-SemiBold.woff')
 const fontBuffer = fetch(path).then((res) => res.arrayBuffer())
@@ -14,9 +14,9 @@ type Props = { title: string }
 export async function SocialImage({ title }: Props) {
   const font = await fontBuffer
   return new ImageResponse(
-    <div tw='bg-black h-full w-full flex flex-col items-center justify-center'>
-      <div tw='flex items-center justify-center'>
-        <Icons.logo height={300} fill='white' />
+    <div tw="bg-black h-full w-full flex flex-col items-center justify-center">
+      <div tw="flex items-center justify-center">
+        <Icons.logo height={300} fill="white" />
       </div>
       <div
         style={{

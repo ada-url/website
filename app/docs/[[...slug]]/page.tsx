@@ -88,29 +88,29 @@ export default async function DocPage({ params }: Props) {
   const toc = await getTableOfContents(doc.body.raw)
 
   return (
-    <main className='relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]'>
-      <div className='mx-auto w-full min-w-0'>
-        <div className='mb-4 flex items-center space-x-1 text-sm text-muted-foreground'>
-          <div className='overflow-hidden text-ellipsis whitespace-nowrap'>Docs</div>
-          <ChevronRight className='h-4 w-4' />
-          <div className='font-medium text-foreground'>{doc.title}</div>
+    <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
+      <div className="mx-auto w-full min-w-0">
+        <div className="mb-4 flex items-center space-x-1 text-sm text-muted-foreground">
+          <div className="overflow-hidden text-ellipsis whitespace-nowrap">Docs</div>
+          <ChevronRight className="h-4 w-4" />
+          <div className="font-medium text-foreground">{doc.title}</div>
         </div>
-        <div className='space-y-2'>
+        <div className="space-y-2">
           <h1 className={cn('scroll-m-20 text-4xl font-bold tracking-tight')}>{doc.title}</h1>
           {doc.description && (
-            <p className='text-lg text-muted-foreground'>
+            <p className="text-lg text-muted-foreground">
               <Balancer>{doc.description}</Balancer>
             </p>
           )}
         </div>
-        <Separator className='my-4 md:my-6' />
+        <Separator className="my-4 md:my-6" />
         <Mdx code={doc.body.code} />
-        <Separator className='my-4 md:my-6' />
+        <Separator className="my-4 md:my-6" />
         <DocsPager doc={doc} />
       </div>
-      <div className='hidden text-sm xl:block'>
-        <div className='sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] overflow-hidden pt-6'>
-          <ScrollArea className='pb-10'>
+      <div className="hidden text-sm xl:block">
+        <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] overflow-hidden pt-6">
+          <ScrollArea className="pb-10">
             <DashboardTableOfContents toc={toc} />
           </ScrollArea>
         </div>

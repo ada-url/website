@@ -14,21 +14,14 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  quality:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
-      - uses: actions/checkout@v3
-        with:
-          persist-credentials: false
-
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-
-      - uses: rome/setup-rome@v0.4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Biome
+        uses: biomejs/setup-biome@v2
         with:
           version: latest
-      
-      - name: Lint
-        run: rome ci .
+      - name: Run Biome
+        run: biome ci .

@@ -1,6 +1,5 @@
 'use client'
 
-import ParsingResult, { WASMResponse } from './result'
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -10,6 +9,7 @@ import { Loader2 } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import ParsingResult, { type WASMResponse } from './result'
 
 let wasm: {
   parse: (url: string) => WASMResponse & { delete: VoidFunction }
@@ -35,7 +35,7 @@ export default function PlaygroundForm() {
       return decodeURI(search)
     }
     return window.location.href
-  }, [])
+  }, [searchParams])
   const onSubmit = useCallback(
     async (data: { url: string }) => {
       try {
@@ -63,24 +63,24 @@ export default function PlaygroundForm() {
   }, [defaultValue, onSubmit])
 
   return (
-    <div className='container relative pb-10 space-y-4'>
+    <div className="container relative pb-10 space-y-4">
       <PageHeader>
         <PageHeaderHeading>Playground</PageHeaderHeading>
         <PageHeaderDescription>Run Ada on browser using WebAssembly</PageHeaderDescription>
       </PageHeader>
 
-      <div className='flex flex-col space-y-4'>
-        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-row space-x-4 mb-8'>
+      <div className="flex flex-col space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-row space-x-4 mb-8">
           <Input
-            type='text'
+            type="text"
             required
-            placeholder='Please enter a valid URL to parse through Ada'
+            placeholder="Please enter a valid URL to parse through Ada"
             defaultValue={defaultValue}
             {...register('url', { required: true })}
           />
 
-          <Button disabled={formState.isLoading} className='w-32 m-0!'>
-            {formState.isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
+          <Button disabled={formState.isLoading} className="w-32 m-0!">
+            {formState.isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             Parse
           </Button>
         </form>
