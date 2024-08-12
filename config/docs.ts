@@ -74,6 +74,11 @@ export const docsConfig: DocsConfig = {
           href: '/docs/clients/go',
           items: [],
         },
+        {
+          title: 'LuaJIT client',
+          href: '/docs/clients/luajit',
+          items: [],
+        },
       ],
     },
   ],
