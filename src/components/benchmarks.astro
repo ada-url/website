@@ -1,0 +1,100 @@
+---
+
+---
+
+<section class="container space-y-6 bg-slate-50 dark:bg-transparent mx-auto">
+  <div
+    class="mx-auto flex max-w-[58rem] flex-col items-center space-y-4 text-center"
+  >
+    <h2 class="sm:!text-3xl md:!text-6xl">Ada is fast</h2>
+    <p
+      class="max-w-[85%] leading-normal text-[--sl-color-gray-3] dark:text-[--sl-color-gray-2] sm:text-lg sm:leading-7"
+    >
+      On a benchmark where we need to validate and normalize{" "}
+      <a
+        href="https://github.com/ada-url/url-various-datasets/tree/main/top100"
+        class="font-bold"
+      >
+        thousands of URLs found on popular websites
+      </a>{" "}
+      we find that ada can be several times faster than popular competitors.
+    </p>
+  </div>
+  <div>
+    <div style="width: 800px;" class="max-w-full mx-auto">
+      <canvas id="acquisitions"></canvas>
+    </div>
+  </div>
+</section>
+
+<script>
+  import Chart from "chart.js/auto";
+
+  (async function () {
+    const data = [
+      { competitors: "Ada", count: 188 },
+      { competitors: "Servo URL", count: 664 },
+      { competitors: "cURL", count: 1471 },
+    ];
+
+    new Chart(document.getElementById("acquisitions") as HTMLCanvasElement, {
+      type: "bar",
+      options: {
+        indexAxis: "y",
+        scales: {
+          x: {
+            max: 2000,
+            ticks: {
+              maxTicksLimit: 5,
+              callback: function (value) {
+                return `${value}ns`;
+              },
+              color: "#757887",
+            },
+            grid: {
+              display: true,
+              color: "#757887",
+            },
+          },
+          y: {
+            ticks: {
+              color: "#757887",
+            },
+            grid: {
+              display: false,
+            },
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              title: function () {
+                return "";
+              },
+              label: function (tooltipItem: { raw: any }) {
+                const value = tooltipItem.raw;
+                return `${value}ns`;
+              },
+            },
+          },
+        },
+      },
+      data: {
+        labels: data.map((row) => row.competitors),
+        datasets: [
+          {
+            data: data.map((row) => row.count),
+            backgroundColor: "#8884D8",
+            hoverBackgroundColor: "#7874C8",
+            borderRadius: 10,
+            maxBarThickness: 45,
+          },
+        ],
+      },
+    });
+  })();
+</script>

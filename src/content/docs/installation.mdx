@@ -1,0 +1,93 @@
+---
+title: Installation
+description: How to install Ada and add as a dependency
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+<Aside>Ada is available on different programming languages such as **C++**, **Python**, **Go**, **Rust** or **LuaJIT**.</Aside>
+
+## Homebrew
+
+Ada is available through [Homebrew](https://formulae.brew.sh/formula/ada-url#default).
+Homebrew is kept up to date with the recent releases of Ada.
+
+Run the following command to install Ada to your macOS computer:
+
+```bash
+brew install ada-url
+```
+
+## Build from source
+
+### Requirements
+
+The project is self-contained and has no dependency.
+A recent C++ compiler supporting C++17. We test GCC 9 or better, LLVM 10 or better and Microsoft Visual Studio 2022.
+
+### Compiling
+
+<Aside>Ada uses **cmake** as a build system. It's recommended to have cmake available in your system.</Aside>
+
+Run the following commands to compile and build Ada locally.
+
+<Steps>
+
+ 1. Prepare build
+
+    The following command prepares the build.
+
+    ```bash
+    cmake -B build
+    ```
+
+ 2. Build
+
+    Run the following command to build Ada on your system.
+
+    ```bash
+    cmake --build build
+    ```
+
+ 3. Run tests
+
+    Run the following `ctest` command to validate your build.
+
+    ```bash
+    ctest --output-on-failure --test-dir build
+    ```
+
+</Steps>
+
+### Windows
+
+Windows users need additional flags to specify the build configuration, e.g. `--config Release`.
+
+### Docker
+
+The project can also be built via docker using default docker file of repository with following commands.
+
+<Steps>
+
+ 1. Build and prepare the docker file
+
+    ```bash
+    docker build -t ada-builder
+    ```
+
+ 2. Run the tests
+
+    ```bash
+    docker run --rm -it -v ${PWD}:/repo ada-builder
+    ```
+
+</Steps>
+
+### Amalgamation
+
+You may amalgamate all source files into only two files (`ada.h` and `ada.cpp`) by typing executing the Python
+3 script `singleheader/amalgamate.py`. By default, the files are created in the `singleheader` directory.
+
+```bash
+./singleheader/amalgamate.py
+```
