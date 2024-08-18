@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "astro sync && next build",
     "start": "next start",
     "dev-astro": "astro dev",
     "build-astro": "astro build",
