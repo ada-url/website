@@ -8,8 +8,8 @@
     "start": "next start",
     "dev-astro": "astro dev",
     "build-astro": "astro build",
-    "lint": "biome check . && biome format .",
-    "lint-fix": "biome check . --write --unsafe && biome format . --write"
+    "lint": "biome check .",
+    "lint-fix": "biome check . --write --unsafe"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.26.1",
