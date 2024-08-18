@@ -1,16 +1,16 @@
-import { defineConfig } from "astro/config";
-import starlight from "@astrojs/starlight";
+import starlight from '@astrojs/starlight'
+import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
-  srcDir: "./astro",
+  srcDir: './astro',
   integrations: [
     starlight({
       // https://starlight.astro.build/reference/configuration
-      title: "Ada URL",
+      title: 'Ada URL',
       social: {
-        github: "https://github.com/ada-url/ada",
+        github: 'https://github.com/ada-url/ada',
       },
     }),
   ],
-});
+})
