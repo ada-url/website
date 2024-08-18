@@ -1,6 +1,6 @@
-import PlaygroundForm from './form'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { Suspense } from 'react'
+import PlaygroundForm from './form'
 
 const title = 'URL Parser Playground'
 const description =

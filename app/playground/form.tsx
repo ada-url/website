@@ -1,6 +1,5 @@
 'use client'
 
-import ParsingResult, { WASMResponse } from './result'
 import { PageHeader, PageHeaderDescription, PageHeaderHeading } from '@/components/page-header'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -10,6 +9,7 @@ import { Loader2 } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import ParsingResult, { type WASMResponse } from './result'
 
 let wasm: {
   parse: (url: string) => WASMResponse & { delete: VoidFunction }

@@ -14,7 +14,7 @@ import {
   Laptop,
   Link,
   Loader2,
-  LucideProps,
+  type LucideProps,
   Moon,
   MoreVertical,
   Pizza,
@@ -54,7 +54,7 @@ export const Icons = {
   laptop: Laptop,
   link: Link,
   gitHub: (props: LucideProps) => (
-    // rome-ignore lint/a11y/noSvgWithoutTitle: Unnecessary.
+    // biome-ignore lint/a11y/noSvgWithoutTitle: Unnecessary.
     <svg viewBox='0 0 438.549 438.549' {...props}>
       <path
         fill='currentColor'
@@ -63,7 +63,7 @@ export const Icons = {
     </svg>
   ),
   logo: (props: LucideProps) => (
-    // rome-ignore lint/a11y/noSvgWithoutTitle: Unnecessary.
+    // biome-ignore lint/a11y/noSvgWithoutTitle: Unnecessary.
     <svg viewBox='0 0 660 728' xmlns='http://www.w3.org/2000/svg' {...props}>
       <path
         className='fill-black dark:fill-white'

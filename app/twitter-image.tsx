@@ -1,5 +1,5 @@
-import Image from './opengraph-image'
 import { imageSize } from '@/components/social-image'
+import Image from './opengraph-image'
 
 export const runtime = 'edge'
 export const contentType = 'image/png'

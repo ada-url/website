@@ -1,6 +1,6 @@
 'use client'
 
-import { SidebarNavItem } from '@/types/nav'
+import type { SidebarNavItem } from '@/types/nav'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
