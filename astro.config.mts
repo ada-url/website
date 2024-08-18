@@ -4,6 +4,14 @@ import { defineConfig } from 'astro/config'
 // https://astro.build/config
 export default defineConfig({
   srcDir: './astro',
+  vite: {
+    build: {
+      rollupOptions: {
+        // For some reason, the build crashes without this
+        external: ['sharp'],
+      },
+    },
+  },
   integrations: [
     starlight({
       // https://starlight.astro.build/reference/configuration
