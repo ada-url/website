@@ -21,19 +21,19 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: "Getting Started",
-          items: ["introduction", "installation"],
+          label: 'Getting Started',
+          items: ['introduction', 'installation'],
         },
         {
-          label: "CLI",
+          label: 'CLI',
           items: [
             {
-              label: "Introduction",
-              slug: "cli",
+              label: 'Introduction',
+              slug: 'cli',
             },
             {
-              label: "Performance",
-              slug: "cli/performance",
+              label: 'Performance',
+              slug: 'cli/performance',
             },
           ],
         },

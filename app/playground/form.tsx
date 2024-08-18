@@ -35,7 +35,7 @@ export default function PlaygroundForm() {
       return decodeURI(search)
     }
     return window.location.href
-  }, [])
+  }, [searchParams.get])
   const onSubmit = useCallback(
     async (data: { url: string }) => {
       try {
