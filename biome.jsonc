@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/rome/configuration_schema.json",
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "organizeImports": {
     "enabled": true
   },
@@ -15,23 +15,37 @@
       },
       "suspicious": {
         "noExplicitAny": "off"
+      },
+      "complexity": {
+        "noForEach": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "warn"
       }
     }
   },
   "formatter": {
     "enabled": true,
-    "indentSize": 2,
+    "indentWidth": 2,
     "indentStyle": "space",
     "lineWidth": 100
   },
   "files": {
-    "ignore": ["node_modules", "public", ".next", ".contentlayer", "lib/wasm", ".vercel"]
+    "ignore": [
+      "node_modules",
+      "public",
+      ".next",
+      ".contentlayer",
+      "lib/wasm",
+      ".vercel"
+    ]
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
       "quoteProperties": "asNeeded",
-      "trailingComma": "all",
+      "jsxQuoteStyle": "single",
+      "trailingCommas": "all",
       "semicolons": "asNeeded"
     }
   }

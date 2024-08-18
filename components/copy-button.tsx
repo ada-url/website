@@ -13,6 +13,7 @@ interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 export function CopyButton({ value, className, src, ...props }: CopyButtonProps) {
   const [hasCopied, setHasCopied] = React.useState(false)
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   React.useEffect(() => {
     setTimeout(() => {
       setHasCopied(false)
