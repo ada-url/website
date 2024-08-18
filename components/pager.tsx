@@ -1,5 +1,5 @@
-import { NavItem, NavItemWithChildren } from '@/types/nav'
-import { Doc } from 'contentlayer/generated'
+import type { NavItem, NavItemWithChildren } from '@/types/nav'
+import type { Doc } from 'contentlayer/generated'
 import Link from 'next/link'
 
 import { Icons } from '@/components/icons'

@@ -1,6 +1,6 @@
-import { defineDocumentType, defineNestedType, makeSource } from 'contentlayer/source-files'
 import fs from 'node:fs'
 import path from 'node:path'
+import { defineDocumentType, defineNestedType, makeSource } from 'contentlayer/source-files'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypePrettyCode from 'rehype-pretty-code'
 import rehypeSlug from 'rehype-slug'
@@ -135,15 +135,15 @@ export default makeSource({
               return
             }
 
-            preElement.properties['__withMeta__'] = node.children.at(0).tagName === 'div'
-            preElement.properties['__rawString__'] = node.__rawString__
+            preElement.properties.__withMeta__ = node.children.at(0).tagName === 'div'
+            preElement.properties.__rawString__ = node.__rawString__
 
             if (node.__src__) {
-              preElement.properties['__src__'] = node.__src__
+              preElement.properties.__src__ = node.__src__
             }
 
             if (node.__event__) {
-              preElement.properties['__event__'] = node.__event__
+              preElement.properties.__event__ = node.__event__
             }
           }
         })
