@@ -20,7 +20,6 @@ The Ada library passes the full range of tests from the specification, across a 
 The term WHATWG stands for **Web Hypertext Application Technology Working Group**.
       
 It is a community-driven organization that focuses on developing and maintaining web standards.
-
 The WHATWG was initially formed in response to the divergence between the World Wide Web Consortium (W3C) and the browser vendors at the time, who felt that the W3C process was too slow to address the evolving needs of web developers.
 </details>
 <details>
