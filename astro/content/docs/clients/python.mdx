@@ -47,7 +47,7 @@ From within your virtual environment, run:
 
 The `ada_url` package defines a `URL` class that can parse URLs:
 
-```python3
+```py
 >>> import ada_url
 >>> urlobj = ada_url.URL('https://example.org/path/file.txt')
 >>> urlobj.protocol
@@ -62,7 +62,7 @@ It also exposes some higher level functions for analyzing and manipulating URLs:
 
 #### parse_url
 
-```python3
+```py
 >>> import ada_url
 >>> ada_url.parse_url('https://user:pass@example.org:80/api?q=1#2')
 {
@@ -81,7 +81,7 @@ It also exposes some higher level functions for analyzing and manipulating URLs:
 
 #### join_url
 
-```python3
+```py
 >>> import ada_url
 >>> ada_url.join_url(
 'https://example.org/dir/child.txt', '../parent.txt'
