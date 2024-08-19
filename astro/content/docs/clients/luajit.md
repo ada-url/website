@@ -1,0 +1,65 @@
+---
+title: LuaJIT
+description: How to install and use Ada in a LuaJIT or OpenResty project
+---
+
+Ada has a LuaJIT / OpenResty client available on [Github][source-code],
+and also on [luarocks.org][rock] and [https://opm.openresty.org/][opm].
+
+## Installation
+
+### Using LuaRocks
+
+```bash
+luarocks install lua-resty-ada
+```
+
+LuaRocks repository for `lua-resty-ada` is located at
+[luarocks.org/modules/bungle/lua-resty-ada](https://luarocks.org/modules/bungle/lua-resty-session).
+
+### Using OpenResty Package Manager
+
+```bash
+opm get bungle/lua-resty-ada
+```
+
+OPM repository for `lua-resty-ada` is located at
+[opm.openresty.org/package/bungle/lua-resty-ada](https://opm.openresty.org/package/bungle/lua-resty-ada/).
+
+## Usage
+
+Please consult the [API documentation][documentation] for a more detailed information.
+
+### URL class
+
+The `resty.ada` can parse URL and return an instance of URL:
+
+```lua
+local ada_url = require("resty.ada")
+local url = ada_url.parse("https://example.org/path/file.txt")
+local protocol = url:get_protocol()
+url:free() -- explicit free (garbage collector would do it implicitly) 
+print(protocol) -- "https:"
+```
+
+### Static functions
+
+The library can also be used without creating instances:
+
+```lua
+local ada_url = require("resty.ada")
+local protocol = ada_url.get_protocol("https://example.org/path/file.txt")
+print(protocol) -- "https:"
+```
+
+## Resources
+
+- [Source code][source-code]
+- [LuaRocks][rock]
+- [OpenResty Package Manager][opm]
+- [Documentation][documentation]
+
+[rock]: https://luarocks.org/modules/bungle/lua-resty-ada
+[opm]: https://opm.openresty.org/package/bungle/lua-resty-ada/
+[documentation]: https://bungle.github.io/lua-resty-ada/
+[source-code]: https://github.com/bungle/lua-resty-ada

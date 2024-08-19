@@ -12,7 +12,7 @@ compare against [trurl](https://github.com/curl/trurl) version 0.6 (libcurl/7.87
 
 <details>
 <summary>
-**wikipedia_100k dataset**, adaparse can parse URLs **three times faster than trurl**.
+wikipedia_100k dataset, adaparse can parse URLs three times faster than trurl.
 </summary>
 
 ```bash
@@ -28,7 +28,7 @@ compare against [trurl](https://github.com/curl/trurl) version 0.6 (libcurl/7.87
 </details>
 <details>
 <summary>
-Using **top100 dataset**, adaparse is **twice as fast as the trurl**.
+Using top100 dataset, adaparse is twice as fast as the trurl.
 </summary>
 
 ```bash

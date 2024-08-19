@@ -37,6 +37,31 @@ export default defineConfig({
             },
           ],
         },
+        {
+          label: 'Supported Languages',
+          items: [
+            {
+              label: 'C++ client',
+              slug: 'clients/cpp',
+            },
+            {
+              label: 'Rust client',
+              slug: 'clients/rust',
+            },
+            {
+              label: 'Python client',
+              slug: 'clients/python',
+            },
+            {
+              label: 'Go client',
+              slug: 'clients/go',
+            },
+            {
+              label: 'LuaJIT client',
+              slug: 'clients/luajit',
+            },
+          ],
+        },
       ],
     }),
   ],
