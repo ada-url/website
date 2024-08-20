@@ -1,0 +1,165 @@
+<section>
+  <header>
+    <h2>Ada is fast</h2>
+    <p>
+      On a benchmark where we need to validate and normalize{" "}
+      <a
+        href="https://github.com/ada-url/url-various-datasets/tree/main/top100"
+      >
+        thousands of URLs found on popular websites
+      </a>{" "} we find that ada can be several times faster than popular competitors.
+    </p>
+  </header>
+  <div>
+    <div style="width: 800px;" class="container-chart">
+      <canvas id="acquisitions"></canvas>
+    </div>
+  </div>
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-inline: 2rem;
+    padding-block: 2rem;
+    background-color: rgb(248 250 252)
+  }
+
+  header {
+    margin-inline: auto;
+    display: flex;
+    max-width: 58rem;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  p {
+    max-width: 85%;
+    line-height: 1.5;
+    color: var(--sl-color-gray-3)
+  }
+
+  h2 {
+    font-size: 3.75rem;
+    line-height: 1;
+  }
+
+  a {
+    font-weight: 700;
+  }
+  
+  .container-chart {
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  :root[data-theme="dark"] {
+    & p {
+      color: var(--sl-color-gray-2);
+    }
+
+    & section {
+      background-color: transparent;
+    }
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+    }
+  }
+
+  @media (min-width: 640px) {
+  
+
+    p {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    section {
+      max-width: 1400px;
+    }
+  }
+</style>  
+
+<script>
+  import Chart from "chart.js/auto";
+  
+  (async function () {
+    const data = [
+      { competitors: "Ada", count: 188 },
+      { competitors: "Servo URL", count: 664 },
+      { competitors: "cURL", count: 1471 },
+    ];
+  
+    new Chart(document.getElementById("acquisitions") as HTMLCanvasElement, {
+      type: "bar",
+      options: {
+        indexAxis: "y",
+        scales: {
+          x: {
+            max: 2000,
+            ticks: {
+              maxTicksLimit: 5,
+              callback: function (value) {
+                return `${value}ns`;
+              },
+              color: "#757887",
+            },
+            grid: {
+              display: true,
+              color: "#757887",
+            },
+          },
+          y: {
+            ticks: {
+              color: "#757887",
+            },
+            grid: {
+              display: false,
+            },
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            displayColors: false,
+            callbacks: {
+              title: function () {
+                return "";
+              },
+              label: function (tooltipItem: { raw: any }) {
+                const value = tooltipItem.raw;
+                return `${value}ns`;
+              },
+            },
+          },
+        },
+      },
+      data: {
+        labels: data.map((row) => row.competitors),
+        datasets: [
+          {
+            data: data.map((row) => row.count),
+            backgroundColor: "#8884D8",
+            hoverBackgroundColor: "#7874C8",
+            borderRadius: 10,
+            maxBarThickness: 45,
+          },
+        ],
+      },
+    });
+  })();
+</script>
