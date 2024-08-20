@@ -67,8 +67,8 @@ export default defineConfig({
       logo: {
         light: './astro/assets/logo-light.svg',
         dark: './astro/assets/logo-dark.svg',
-        replacesTitle: true
-      }
+        replacesTitle: true,
+      },
     }),
   ],
 })
