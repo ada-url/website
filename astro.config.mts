@@ -63,7 +63,7 @@ export default defineConfig({
           ],
         },
       ],
-      favicon: "./public/favicon-32x32.png",
+      favicon: './public/favicon-32x32.png',
       logo: {
         light: './astro/assets/logo-light.svg',
         dark: './astro/assets/logo-dark.svg',
