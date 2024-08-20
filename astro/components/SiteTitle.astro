@@ -1,15 +1,15 @@
 ---
-import AstrolightSiteTitle from "@astrojs/starlight/components/SiteTitle.astro";
-import type { Props } from "@astrojs/starlight/props";
+import AstrolightSiteTitle from '@astrojs/starlight/components/SiteTitle.astro'
+import type { Props } from '@astrojs/starlight/props'
 
 const menuItems = [
-  { name: "Docs", href: "/introduction" },
-  { name: "Performance", href: "/performance" },
-  { name: "Playground", href: "/playground" },
-];
+  { name: 'Docs', href: '/introduction' },
+  { name: 'Performance', href: '/performance' },
+  { name: 'Playground', href: '/playground' },
+]
 
 function pathsMatch(pathA: string, pathB: string): boolean {
-  return pathB.includes(pathA);
+  return pathB.includes(pathA)
 }
 ---
 
