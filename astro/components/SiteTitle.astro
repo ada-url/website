@@ -8,8 +8,8 @@ const menuItems = [
   { name: 'Playground', href: '/playground' },
 ]
 
-function pathsMatch(pathA: string, pathB: string): boolean {
-  return pathB.includes(pathA)
+function pathsMatch(lhs: string, rhs: string): boolean {
+  return rhs.includes(lhs)
 }
 ---
 
