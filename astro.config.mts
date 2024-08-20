@@ -63,6 +63,9 @@ export default defineConfig({
           ],
         },
       ],
+      components: {
+        SiteTitle: './astro/components/SiteTitle.astro',
+      },
       favicon: './public/favicon-32x32.png',
       logo: {
         light: './astro/assets/logo-light.svg',
