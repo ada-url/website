@@ -1,5 +1,5 @@
 import { Terminal } from 'lucide-react'
-import { Alert, AlertDescription, AlertTitle } from './ui/alert'
+import styles from './styles/result.module.css'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 
 export type WASMResponse =
@@ -135,17 +135,17 @@ function getDiagram(props: WASMResponse) {
 
 export default function ParsingResult(props: WASMResponse) {
   const alert = (
-    <Alert>
-      <Terminal className='h-4 w-4' />
-      <AlertTitle>
+    <div role='alert' className={`${styles.Alert} not-content`}>
+      <Terminal className={styles.Terminal} />
+      <h5 className={styles.AlertTitle}>
         {props.result === 'success' ? 'Parsing successful!' : 'Parsing failed!'}
-      </AlertTitle>
-      <AlertDescription>
+      </h5>
+      <p className={styles.AlertDescription}>
         {props.result === 'success'
           ? `Input resolved into "${props.href}"`
           : 'We could not parse this input. It is invalid.'}
-      </AlertDescription>
-    </Alert>
+      </p>
+    </div>
   )
 
   if (props.result !== 'success') {

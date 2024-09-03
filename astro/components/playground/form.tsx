@@ -3,8 +3,7 @@ import { Loader2 } from 'lucide-react'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import ParsingResult, { type WASMResponse } from './result'
-import { Button } from './ui/button'
-import { Input } from './ui/input'
+import styles from './styles/form.module.css'
 import { useToast } from './ui/use-toast'
 
 let wasm: {
@@ -62,20 +61,21 @@ export default function PlaygroundForm() {
   }, [defaultValue, onSubmit])
 
   return (
-    <div className='flex flex-col space-y-4'>
-      <form onSubmit={handleSubmit(onSubmit)} className='flex flex-row space-x-4 mb-8'>
-        <Input
+    <div className={styles.formContainer}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <input
           type='text'
           required
           placeholder='Please enter a valid URL to parse through Ada'
           defaultValue={defaultValue}
           {...register('url', { required: true })}
+          className={styles.Input}
         />
 
-        <Button disabled={formState.isLoading} className='w-32 m-0!'>
-          {formState.isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
+        <button type='button' disabled={formState.isLoading} className={styles.Button}>
+          {formState.isLoading && <Loader2 className={styles.loader} />}
           Parse
-        </Button>
+        </button>
       </form>
 
       {output !== undefined ? <ParsingResult {...output} /> : null}
