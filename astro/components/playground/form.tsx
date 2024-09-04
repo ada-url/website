@@ -39,7 +39,6 @@ export default function PlaygroundForm() {
       try {
         wasm ??= await WASM()
         const result = wasm.parse(data.url)
-        throw new Error('an error randomly occurred')
         setOutput(toJS(result))
         result.delete()
         history.replaceState({}, '', `/playground?url=${encodeURIComponent(data.url)}`)
