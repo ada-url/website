@@ -61,7 +61,7 @@ export default function PlaygroundForm() {
   }, [defaultValue, onSubmit])
 
   return (
-    <div className={styles.formContainer}>
+    <div className={`${styles.formContainer} not-content`}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type='text'
