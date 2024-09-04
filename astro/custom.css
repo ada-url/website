@@ -1,0 +1,8 @@
+:root {
+    --sl-color-red : #991b1b;
+
+}
+
+:root[data-theme="light"] {
+    --sl-color-red: #dc2626;
+}
