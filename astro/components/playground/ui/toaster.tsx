@@ -1,4 +1,4 @@
-    import {
+import {
   Toast,
   ToastClose,
   ToastDescription,
@@ -15,8 +15,8 @@ export function Toaster() {
     <ToastProvider>
       {toasts.map(({ id, title, description, ...props }) => (
         <Toast key={id} {...props} className='not-content'>
-            {title && <ToastTitle>{title}</ToastTitle>}
-            {description && <ToastDescription>{description}</ToastDescription>}
+          {title && <ToastTitle>{title}</ToastTitle>}
+          {description && <ToastDescription>{description}</ToastDescription>}
           <ToastClose />
         </Toast>
       ))}
