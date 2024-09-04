@@ -74,6 +74,10 @@ export default defineConfig({
         dark: './astro/assets/logo-dark.svg',
         replacesTitle: true,
       },
+      customCss: [
+        // Relative path to your custom CSS file
+        './astro/custom.css',
+      ],
     }),
     react(),
   ],

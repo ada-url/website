@@ -39,6 +39,7 @@ export default function PlaygroundForm() {
       try {
         wasm ??= await WASM()
         const result = wasm.parse(data.url)
+        throw new Error('an error randomly occurred')
         setOutput(toJS(result))
         result.delete()
         history.replaceState({}, '', `/playground?url=${encodeURIComponent(data.url)}`)
@@ -47,7 +48,6 @@ export default function PlaygroundForm() {
           toast({
             title: 'An error occurred',
             description: error.message,
-            variant: 'destructive',
           })
         }
         setOutput(undefined)
@@ -72,7 +72,7 @@ export default function PlaygroundForm() {
           className={styles.Input}
         />
 
-        <button type='button' disabled={formState.isLoading} className={styles.Button}>
+        <button type='submit' disabled={formState.isLoading} className={styles.Button}>
           {formState.isLoading && <Loader2 className={styles.loader} />}
           Parse
         </button>
