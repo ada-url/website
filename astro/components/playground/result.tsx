@@ -1,6 +1,6 @@
+import * as Tabs from '@radix-ui/react-tabs'
 import { Terminal } from 'lucide-react'
 import styles from './styles/result.module.css'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs'
 
 export type WASMResponse =
   | {
@@ -135,7 +135,7 @@ function getDiagram(props: WASMResponse) {
 
 export default function ParsingResult(props: WASMResponse) {
   const alert = (
-    <div role='alert' className={`${styles.Alert} not-content`}>
+    <div role='alert' className={styles.Alert}>
       <Terminal className={styles.Terminal} />
       <h5 className={styles.AlertTitle}>
         {props.result === 'success' ? 'Parsing successful!' : 'Parsing failed!'}
@@ -156,22 +156,22 @@ export default function ParsingResult(props: WASMResponse) {
     <>
       {alert}
 
-      <Tabs defaultValue='diagram' className='w-full'>
-        <TabsList>
-          <TabsTrigger value='diagram'>Diagram</TabsTrigger>
-          <TabsTrigger value='raw'>Raw Output</TabsTrigger>
-        </TabsList>
-        <TabsContent value='diagram'>
-          <pre className='bg-neutral-900 rounded-sm text-neutral-200 p-4 font-mono overflow-x-auto'>
-            {getDiagram(props)}
-          </pre>
-        </TabsContent>
-        <TabsContent value='raw'>
-          <pre className='bg-neutral-900 rounded-sm text-neutral-200 p-4 font-mono overflow-x-auto'>
-            {JSON.stringify(props, null, 2)}
-          </pre>
-        </TabsContent>
-      </Tabs>
+      <Tabs.Root defaultValue='diagram' className={styles.Root}>
+        <Tabs.List className={styles.TabsList}>
+          <Tabs.Trigger className={styles.TabsTrigger} value='diagram'>
+            Diagram
+          </Tabs.Trigger>
+          <Tabs.Trigger className={styles.TabsTrigger} value='raw'>
+            Raw Output
+          </Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content className={styles.TabsContent} value='diagram'>
+          <pre>{getDiagram(props)}</pre>
+        </Tabs.Content>
+        <Tabs.Content className={styles.TabsContent} value='raw'>
+          <pre>{JSON.stringify(props, null, 2)}</pre>
+        </Tabs.Content>
+      </Tabs.Root>
     </>
   )
 }
