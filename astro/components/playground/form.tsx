@@ -25,17 +25,8 @@ export default function PlaygroundForm() {
   const { toast } = useToast()
   const { handleSubmit, register, formState } = useForm<{ url: string; version: string }>()
   const [output, setOutput] = useState<WASMResponse | undefined>()
-  const searchParams = useMemo<URLSearchParams>(
-    () => new URLSearchParams(window.location.search),
-    [],
-  )
-  const defaultValue = useMemo<string>(() => {
-    const search = searchParams.get('url')
-    if (search) {
-      return decodeURI(search)
-    }
-    return window.location.href
-  }, [searchParams.get])
+
+  const [defaultValue, setdefaultValue] = useState<string>('')
   const onSubmit = useCallback(
     async (data: { url: string; version: string }) => {
       try {
@@ -56,6 +47,13 @@ export default function PlaygroundForm() {
     },
     [toast],
   )
+
+  // This function only runs on mounting/refresh to set initial default value
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search)
+    const search = searchParams.get('url')
+    setdefaultValue(search ? decodeURI(search) : window.location.href)
+  }, [])
 
   useEffect(() => {
     onSubmit({ url: defaultValue, version: versions[0] })
