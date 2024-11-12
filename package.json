@@ -9,7 +9,7 @@
     "dev-astro": "astro dev",
     "build-astro": "astro build",
     "lint": "biome check .",
-    "lint-fix": "biome check . --write --unsafe"
+    "lint-fix": "biome check . --write"
   },
   "dependencies": {
     "@astrojs/react": "^3.6.2",
