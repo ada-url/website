@@ -1,6 +1,5 @@
 :root {
-    --sl-color-toast-red : #991b1b;
-
+    --sl-color-toast-red: #991b1b;
 }
 
 :root[data-theme="light"] {

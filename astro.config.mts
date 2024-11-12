@@ -1,84 +1,88 @@
-import starlight from '@astrojs/starlight'
-import { defineConfig } from 'astro/config'
+import starlight from "@astrojs/starlight";
+import { defineConfig } from "astro/config";
 
-import react from '@astrojs/react'
+import react from "@astrojs/react";
+
+import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  srcDir: './astro',
+  srcDir: "./astro",
   vite: {
     build: {
       rollupOptions: {
         // For some reason, the build crashes without this
-        external: ['sharp'],
+        external: ["sharp"],
       },
     },
   },
-  integrations: [
-    starlight({
-      // https://starlight.astro.build/reference/configuration
-      title: 'Ada URL',
-      social: {
-        github: 'https://github.com/ada-url/ada',
+  integrations: [starlight({
+    // https://starlight.astro.build/reference/configuration
+    title: "Ada URL",
+    social: {
+      github: "https://github.com/ada-url/ada",
+    },
+    sidebar: [
+      {
+        label: "Getting Started",
+        items: ["introduction", "installation"],
       },
-      sidebar: [
-        {
-          label: 'Getting Started',
-          items: ['introduction', 'installation'],
-        },
-        {
-          label: 'CLI',
-          items: [
-            {
-              label: 'Introduction',
-              slug: 'cli',
-            },
-            {
-              label: 'Performance',
-              slug: 'cli/performance',
-            },
-          ],
-        },
-        {
-          label: 'Supported Languages',
-          items: [
-            {
-              label: 'C++ client',
-              slug: 'clients/cpp',
-            },
-            {
-              label: 'Rust client',
-              slug: 'clients/rust',
-            },
-            {
-              label: 'Python client',
-              slug: 'clients/python',
-            },
-            {
-              label: 'Go client',
-              slug: 'clients/go',
-            },
-            {
-              label: 'LuaJIT client',
-              slug: 'clients/luajit',
-            },
-          ],
-        },
-      ],
-      components: {
-        SiteTitle: './astro/components/SiteTitle.astro',
+      {
+        label: "CLI",
+        items: [
+          {
+            label: "Introduction",
+            slug: "cli",
+          },
+          {
+            label: "Performance",
+            slug: "cli/performance",
+          },
+        ],
       },
-      favicon: './public/favicon-32x32.png',
-      logo: {
-        light: './astro/assets/logo-light.svg',
-        dark: './astro/assets/logo-dark.svg',
-        replacesTitle: true,
+      {
+        label: "Supported Languages",
+        items: [
+          {
+            label: "C++ client",
+            slug: "clients/cpp",
+          },
+          {
+            label: "Rust client",
+            slug: "clients/rust",
+          },
+          {
+            label: "Python client",
+            slug: "clients/python",
+          },
+          {
+            label: "Go client",
+            slug: "clients/go",
+          },
+          {
+            label: "LuaJIT client",
+            slug: "clients/luajit",
+          },
+        ],
       },
-      customCss: [
-        // Relative path to your custom CSS file
-        './astro/custom.css',
-      ],
-    }),
-    react(),
-  ],
-})
+    ],
+    components: {
+      SiteTitle: "./astro/components/SiteTitle.astro",
+    },
+    favicon: "./public/favicon-32x32.png",
+    logo: {
+      light: "./astro/assets/logo-light.svg",
+      dark: "./astro/assets/logo-dark.svg",
+      replacesTitle: true,
+    },
+    customCss: [
+      // Relative path to your custom CSS file
+      "./astro/custom.css",
+    ],
+    editLink: {
+      baseUrl: "https://github.com/ada-url/website/edit/main",
+    },
+    titleDelimiter: "-",
+    credits: false,
+  }), react(), tailwind()],
+});
