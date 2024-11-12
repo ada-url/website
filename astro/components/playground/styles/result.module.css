@@ -1,84 +1,83 @@
 .Terminal {
-    width: 1rem;
-    height: 1rem;
+  width: 1rem;
+  height: 1rem;
 }
 
 .Alert {
-    position: relative;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    width: 100%;
-    font-size: var(--sl-text-base);
-    border: 1px solid var(--sl-color-gray-5);
-    background-color: var(--sl-color-black);
+  position: relative;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  font-size: var(--sl-text-base);
+  border: 1px solid var(--sl-color-gray-5);
+  background-color: var(--sl-color-black);
 }
 
 .Alert > svg {
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
 }
 
 .AlertTitle {
-    font-size: var(--sl-text-h5);
-    margin-bottom: 0.25rem;
-    font-weight: 500;
-    line-height: 1;
-    padding-left: 1.75rem;
+  font-size: var(--sl-text-h5);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  line-height: 1;
+  padding-left: 1.75rem;
 }
 
 .AlertDescription {
-    line-height: var(--sl-line-height);
-    padding-left: 1.75rem;
+  line-height: var(--sl-line-height);
+  padding-left: 1.75rem;
 }
 
 .Root {
-    width: 100%;
-    padding: 0.25rem 0rem;
+  width: 100%;
+  padding: 0.25rem 0rem;
 }
 
 .TabsList {
-    display: flex;
-    height: 2.5rem;
-    border-bottom: 2px solid var(--sl-color-gray-5);
+  display: flex;
+  height: 2.5rem;
+  border-bottom: 2px solid var(--sl-color-gray-5);
 }
 
 .TabsTrigger {
-    display: flex;
-    appearance: none;
-    align-items: center;
-    margin-bottom: -2px;
-    padding: 0 1.25rem;
-    border-width: 0 0 2px 0;
-    border-bottom: solid var(--sl-color-gray-5);
-    color: var(--sl-color-gray-3);
-    outline-offset: var(--sl-outline-offset-inside);
-    background-color: var(--sl-color-bg);
+  display: flex;
+  appearance: none;
+  align-items: center;
+  margin-bottom: -2px;
+  padding: 0 1.25rem;
+  border-width: 0 0 2px 0;
+  border-bottom: solid var(--sl-color-gray-5);
+  color: var(--sl-color-gray-3);
+  outline-offset: var(--sl-outline-offset-inside);
+  background-color: var(--sl-color-bg);
 }
 
 .TabsTrigger:disabled {
-    pointer-events: none;
-    opacity: 0.5;
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .TabsTrigger[data-state="active"] {
-    color: var(--sl-color-white);
-    border-color: var(--sl-color-text-accent);
-    font-weight: 600;
+  color: var(--sl-color-white);
+  border-color: var(--sl-color-text-accent);
+  font-weight: 600;
 }
 
 .TabsContent {
-    margin-top: 0.5rem;
-    outline-offset: 0.25rem;
-    border: 1px solid var(--sl-color-gray-5);
-    background-color: var(--sl-color-bg-inline-code);
-
+  margin-top: 0.5rem;
+  outline-offset: 0.25rem;
+  border: 1px solid var(--sl-color-gray-5);
+  background-color: var(--sl-color-bg-inline-code);
 }
 
 .TabsContent pre {
-    border-radius: 0.5rem;
-    padding: 1rem;
-    color: var(--sl-color-white);
-    font-family: var(--sl-font-system-mono);
-    overflow-x: auto;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: var(--sl-color-white);
+  font-family: var(--sl-font-system-mono);
+  overflow-x: auto;
 }

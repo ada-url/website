@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^3.6.2",
-    "@astrojs/starlight": "^0.28.2",
+    "@astrojs/starlight": "^0.29.0",
     "@astrojs/tailwind": "^5.1.2",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -30,8 +30,8 @@
     "@types/react": "18.2.24",
     "@types/react-dom": "18.2.8",
     "@vercel/analytics": "^1.0.2",
-    "astro": "^4.15.9",
-    "autoprefixer": "10.4.16",
+    "astro": "^4.16.10",
+    "autoprefixer": "10.4.20",
     "chart.js": "^4.4.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
@@ -41,7 +41,7 @@
     "next": "13.5.6",
     "next-contentlayer": "^0.3.4",
     "next-themes": "^0.2.1",
-    "postcss": "8.4.29",
+    "postcss": "8.4.49",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.4",
@@ -52,10 +52,10 @@
     "tailwind-merge": "^1.14.0",
     "tailwindcss": "3.4.14",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "5.2.2"
+    "typescript": "5.6.3"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.0",
+    "@biomejs/biome": "^1.9.4",
     "@types/unist": "^3.0.0",
     "markdown-wasm": "^1.2.0",
     "mdast-util-toc": "^7.0.0",

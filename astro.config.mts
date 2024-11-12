@@ -70,7 +70,7 @@ export default defineConfig({
       components: {
         SiteTitle: './astro/components/SiteTitle.astro',
       },
-      favicon: './public/favicon-32x32.png',
+      favicon: './favicon-32x32.png',
       logo: {
         light: './astro/assets/logo-light.svg',
         dark: './astro/assets/logo-dark.svg',
