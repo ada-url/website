@@ -8,6 +8,7 @@ import tailwind from '@astrojs/tailwind'
 // https://astro.build/config
 export default defineConfig({
   srcDir: './astro',
+  site: 'https://www.ada-url.com',
   vite: {
     build: {
       rollupOptions: {
