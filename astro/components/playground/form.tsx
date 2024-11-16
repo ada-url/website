@@ -1,6 +1,6 @@
 import WASM from '@/lib/wasm/wasm.js'
 import { ChevronDown, Loader2 } from 'lucide-react'
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import ParsingResult, { type WASMResponse } from './result'
 import styles from './styles/form.module.css'
@@ -14,19 +14,18 @@ const versions = ['2.9.2', '2.9.1', '2.9.0', '2.8.0']
 
 function toJS(obj: Record<string, any>): any {
   const result: Record<string, any> = {}
-  for (const key of Object.keys(obj.__proto__)) {
+  for (const key in obj.__proto__) {
     result[key] = typeof obj[key] === 'object' ? toJS(obj[key]) : obj[key]
   }
   return result
 }
 
 export default function PlaygroundForm() {
-  //const router = useRouter()
   const { toast } = useToast()
   const { handleSubmit, register, formState } = useForm<{ url: string; version: string }>()
   const [output, setOutput] = useState<WASMResponse | undefined>()
 
-  const [defaultValue, setdefaultValue] = useState<string>('')
+  const [defaultValue, setDefaultValue] = useState<string>()
   const onSubmit = useCallback(
     async (data: { url: string; version: string }) => {
       try {
@@ -52,12 +51,10 @@ export default function PlaygroundForm() {
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search)
     const search = searchParams.get('url')
-    setdefaultValue(search ? decodeURI(search) : window.location.href)
-  }, [])
-
-  useEffect(() => {
-    onSubmit({ url: defaultValue, version: versions[0] })
-  }, [defaultValue, onSubmit])
+    const value = search ? decodeURI(search) : window.location.href
+    setDefaultValue(value)
+    onSubmit({ url: value, version: versions.at(0) ?? '' })
+  }, [onSubmit])
 
   return (
     <div className={`${styles.formContainer} not-content`}>
