@@ -65,6 +65,10 @@ export default defineConfig({
               label: 'LuaJIT client',
               slug: 'clients/luajit',
             },
+            {
+              label: 'D client',
+              slug: 'clients/d',
+            },
           ],
         },
       ],

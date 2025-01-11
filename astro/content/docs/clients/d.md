@@ -20,11 +20,13 @@ Modules hierarchy:
 ```bash
 .
 └── source
-    ├── c
-    │   ├── ada.d # low-level C bindings - @nogc, nothrow, @safe and betterC compatible
-    │   └── wrapper.d # D (mangled) RAII - nothrow, @safe and betterC compatible
-    └── package.d # by default set public wrapper.d in 'import ada_url'
-                  # (for low-level C bindings use 'import c.ada')
+    └── ada
+        ├── c
+        │   ├── ada.d # low-level C bindings - @nogc, nothrow, @safe and betterC compatible
+        │   └── wrapper.d # D (mangled) RAII - @nogc, nothrow, @safe and betterC compatible
+        └── url
+            └── package.d # by default set public wrapper.d in 'import ada.url'
+                          # (for low-level C bindings use 'import ada.c.ada')
 ```
 
 ## Usage
@@ -32,7 +34,7 @@ Modules hierarchy:
 Here is an example illustrating a common usage:
 
 ```d
-import ada_url : AdaUrl, ParseOptions; // @safe, nothrow and betterC compatible
+import ada.url : AdaUrl, ParseOptions; // @safe, nothrow and betterC compatible
 import std.stdio : writeln; // need GC and throw exception
 
 void main() @safe {
@@ -45,6 +47,8 @@ void main() @safe {
   writeln("href: ", u.getHref); // empty '()' is optional
 }
 ```
+
+full example: [here](https://github.com/kassane/ada-d/tree/main/example)
 
 ## Resources
 
