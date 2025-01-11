@@ -48,7 +48,7 @@ void main() @safe {
 }
 ```
 
-full example: [here](https://github.com/kassane/ada-d/tree/v1.0.3/example)
+full example: [here](https://github.com/kassane/ada-d/tree/main/example)
 
 ## Resources
 
