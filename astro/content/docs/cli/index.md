@@ -39,14 +39,14 @@ adaparse -d http://www.google.com/bal\?a\=\=11\#fddfds
 
 ```text
 http://www.google.com/bal?a==11#fddfds [38 bytes]
-| |             |   |     |
-| |             |   |     `------ hash_start
-| |             |   `------------ search_start 25
-| |             `---------------- pathname_start 21
-| |             `---------------- host_end 21
-| `------------------------------ host_start 7
-| `------------------------------ username_end 7
-`-------------------------------- protocol_end 5
+     | |             |   |     |
+     | |             |   |     `------ hash_start
+     | |             |   `------------ search_start 25
+     | |             `---------------- pathname_start 21
+     | |             `---------------- host_end 21
+     | `------------------------------ host_start 7
+     | `------------------------------ username_end 7
+     `-------------------------------- protocol_end 5
 ```
 
 ### Pipe Operator
