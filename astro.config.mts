@@ -1,15 +1,14 @@
 import starlight from '@astrojs/starlight'
 import { defineConfig } from 'astro/config'
-
 import react from '@astrojs/react'
-
-import tailwind from '@astrojs/tailwind'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
   srcDir: './astro',
   site: 'https://www.ada-url.com',
   vite: {
+    plugins: [tailwindcss()],
     build: {
       rollupOptions: {
         // For some reason, the build crashes without this
@@ -21,9 +20,9 @@ export default defineConfig({
     starlight({
       // https://starlight.astro.build/reference/configuration
       title: 'Ada URL',
-      social: {
-        github: 'https://github.com/ada-url/ada',
-      },
+      social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/ada-url/ada' },
+      ],
       sidebar: [
         {
           label: 'Getting Started',
@@ -86,7 +85,6 @@ export default defineConfig({
         replacesTitle: true,
       },
       customCss: [
-        // Relative path to your custom CSS file
         './astro/custom.css',
       ],
       editLink: {
@@ -96,6 +94,5 @@ export default defineConfig({
       credits: false,
     }),
     react(),
-    tailwind(),
   ],
 })

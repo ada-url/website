@@ -1,0 +1,11 @@
+name = "ada-website"
+compatibility_date = "2026-03-21"
+send_metrics = false
+preview_urls = true
+
+[assets]
+directory = "./dist"
+not_found_handling = "404-page"
+
+[observability]
+enabled = true
