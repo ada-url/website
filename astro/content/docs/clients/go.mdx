@@ -3,4 +3,70 @@ title: Go
 description: How to install and use Ada in a Go project
 ---
 
-Ada has a Go client available on [Github](https://github.com/ada-url/goada).
+Ada has a Go client available on [GitHub](https://github.com/ada-url/goada).
+
+## Requirements
+
+Go 1.24 or better.
+
+## Installation
+
+```bash
+go get github.com/ada-url/goada
+```
+
+## Usage
+
+```go
+import (
+    "github.com/ada-url/goada"
+    "fmt"
+)
+
+url, err := goada.New("https://www.GOogle.com")
+if err != nil {
+    // handle error
+}
+fmt.Println(url.Href())     // https://www.google.com/
+url.SetProtocol("http:")
+url.SetHash("goada")
+fmt.Println(url.Hash())     // #goada
+fmt.Println(url.Href())     // http://www.google.com/#goada
+```
+
+## Why not `net/url`?
+
+Go's built-in `net/url` follows RFC 3986 rather than the WHATWG URL standard
+used by browsers. This leads to differences in practice:
+
+| String source | Value |
+|:---|:---|
+| Input | `https://www.7-Eleven.com/Home/../Privacy/Montréal` |
+| Ada (goada) | `https://www.xn--7eleven-506c.com/Home/Privacy/Montr%C3%A9al` |
+| Go `net/url` | `https://www.7-Eleven.com/Home/../Privacy/Montr%C3%A9al` |
+
+Specifically, Go's `net/url`:
+
+- Does not normalize hostnames (no IDNA/Punycode encoding)
+- Does not process path components (no dot-segment removal)
+- Does not encode special characters in query parameters the same way browsers do
+
+## Performance
+
+Benchmarks against the top 100k URLs dataset:
+
+| Library | ns/op per URL | WHATWG compliant |
+|---|---|---|
+| `github.com/ada-url/goada` | 22.0 | Yes |
+| Go `net/url` | 19.4 | No |
+| `github.com/nlnwa/whatwg-url` | 139.0 | Yes |
+
+goada is the fastest WHATWG-compliant URL parser available for Go.
+
+Run `go test -bench BenchmarkTop100 -run -` to reproduce these results.
+
+## Resources
+
+- [Source code](https://github.com/ada-url/goada)
+- [GoDoc](https://godoc.org/github.com/ada-url/goada)
+- [Benchmark datasets](https://github.com/ada-url/url-various-datasets)
