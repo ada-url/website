@@ -43,6 +43,11 @@ form > div {
   cursor: pointer;
 }
 
+.Button:focus-visible {
+  outline: 2px solid var(--sl-color-text-accent);
+  outline-offset: 0.25rem;
+}
+
 .Button:disabled {
   pointer-events: none;
   opacity: 0.5;
@@ -63,6 +68,12 @@ form > div {
 
 .Input:hover {
   border: 1px solid var(--sl-color-white);
+}
+
+.Input:focus-visible {
+  outline: 2px solid var(--sl-color-text-accent);
+  outline-offset: 0;
+  border-color: transparent;
 }
 
 .Input:disabled {
@@ -102,6 +113,12 @@ form > div {
   font-size: var(--sl-text-sm);
   border: 0;
   padding-inline: 1.25rem;
+}
+
+.Select:focus-visible {
+  outline: 2px solid var(--sl-color-text-accent);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 .Option {

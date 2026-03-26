@@ -136,10 +136,10 @@ function getDiagram(props: WASMResponse) {
 export default function ParsingResult(props: WASMResponse) {
   const alert = (
     <div role='alert' className={styles.Alert}>
-      <Terminal className={styles.Terminal} />
-      <h5 className={styles.AlertTitle}>
+      <Terminal aria-hidden='true' className={styles.Terminal} />
+      <p className={styles.AlertTitle}>
         {props.result === 'success' ? 'Parsing successful!' : 'Parsing failed!'}
-      </h5>
+      </p>
       <p className={styles.AlertDescription}>
         {props.result === 'success'
           ? `Input resolved into "${props.href}"`
@@ -166,10 +166,14 @@ export default function ParsingResult(props: WASMResponse) {
           </Tabs.Trigger>
         </Tabs.List>
         <Tabs.Content className={styles.TabsContent} value='diagram'>
-          <pre>{getDiagram(props)}</pre>
+          <pre role='img' aria-label='ASCII diagram of parsed URL components'>
+            {getDiagram(props)}
+          </pre>
         </Tabs.Content>
         <Tabs.Content className={styles.TabsContent} value='raw'>
-          <pre>{JSON.stringify(props, null, 2)}</pre>
+          <section aria-label='Parsed URL components as JSON'>
+            <pre>{JSON.stringify(props, null, 2)}</pre>
+          </section>
         </Tabs.Content>
       </Tabs.Root>
     </>

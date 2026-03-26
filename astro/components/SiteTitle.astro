@@ -18,7 +18,7 @@ function pathsMatch(lhs: string, rhs: string): boolean {
 
   <div class="separator"></div>
 
-  <div class="menu-items">
+  <nav aria-label="Main navigation">
     {
       menuItems.map((menuItem) => (
         <a
@@ -31,7 +31,7 @@ function pathsMatch(lhs: string, rhs: string): boolean {
         </a>
       ))
     }
-  </div>
+  </nav>
 </div>
 
 <style>
@@ -66,7 +66,7 @@ function pathsMatch(lhs: string, rhs: string): boolean {
   }
 
   @media (min-width: 50rem) {
-    .menu-items {
+    nav {
       display: flex;
     }
     .separator {

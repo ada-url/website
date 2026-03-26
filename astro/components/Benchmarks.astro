@@ -1,6 +1,6 @@
-<section>
+<section aria-labelledby="benchmarks-heading">
   <header>
-    <h2>Ada is fast</h2>
+    <h2 id="benchmarks-heading">Ada is fast</h2>
     <p>
       On a benchmark where we need to validate and normalize{" "}
       <a
@@ -12,8 +12,27 @@
   </header>
   <div>
     <div style="width: 800px;" class="container-chart">
-      <canvas id="acquisitions"></canvas>
+      <canvas
+        id="acquisitions"
+        role="img"
+        aria-label="Bar chart comparing URL parsing speed: Ada 188 ns/URL, Servo URL 664 ns/URL, cURL 1471 ns/URL"
+      ></canvas>
     </div>
+    <!-- Visually-hidden text alternative for screen readers -->
+    <table class="sr-only">
+      <caption>URL parsing speed comparison (lower is faster)</caption>
+      <thead>
+        <tr>
+          <th scope="col">Parser</th>
+          <th scope="col">Speed (ns/URL)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Ada</td><td>188</td></tr>
+        <tr><td>Servo URL</td><td>664</td></tr>
+        <tr><td>cURL</td><td>1471</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -59,6 +78,19 @@
     margin-inline: auto;
   }
 
+  /* Visually hidden but accessible to screen readers */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
   :root[data-theme="dark"] {
     & p {
       color: var(--sl-color-gray-2);
@@ -94,15 +126,37 @@
 
 <script>
   import Chart from "chart.js/auto";
-  
-  (async function () {
-    const data = [
-      { competitors: "Ada", count: 188 },
-      { competitors: "Servo URL", count: 664 },
-      { competitors: "cURL", count: 1471 },
-    ];
-  
-    new Chart(document.getElementById("acquisitions") as HTMLCanvasElement, {
+
+  function getChartColors() {
+    const style = getComputedStyle(document.documentElement);
+    // Use Starlight's own grey tokens so colours adapt to both themes
+    const tickColor =
+      style.getPropertyValue("--sl-color-gray-3").trim() || "#6b7280";
+    const gridColor =
+      style.getPropertyValue("--sl-color-gray-6").trim() ||
+      "rgba(107,114,128,0.2)";
+    return { tickColor, gridColor };
+  }
+
+  const data = [
+    { competitors: "Ada", count: 188 },
+    { competitors: "Servo URL", count: 664 },
+    { competitors: "cURL", count: 1471 },
+  ];
+
+  let chart: Chart | null = null;
+
+  function buildChart() {
+    const canvas = document.getElementById(
+      "acquisitions"
+    ) as HTMLCanvasElement | null;
+    if (!canvas) return;
+
+    if (chart) chart.destroy();
+
+    const { tickColor, gridColor } = getChartColors();
+
+    chart = new Chart(canvas, {
       type: "bar",
       options: {
         indexAxis: "y",
@@ -114,16 +168,16 @@
               callback: function (value) {
                 return `${value}ns`;
               },
-              color: "#757887",
+              color: tickColor,
             },
             grid: {
               display: true,
-              color: "#757887",
+              color: gridColor,
             },
           },
           y: {
             ticks: {
-              color: "#757887",
+              color: tickColor,
             },
             grid: {
               display: false,
@@ -161,5 +215,14 @@
         ],
       },
     });
-  })();
+  }
+
+  buildChart();
+
+  // Rebuild the chart whenever Starlight switches between light and dark themes
+  // so tick/grid colours stay legible in both modes.
+  new MutationObserver(() => buildChart()).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["data-theme"],
+  });
 </script>

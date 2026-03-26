@@ -31,8 +31,14 @@ const ToastClose = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Close>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Close>
 >(({ ...props }, ref) => (
-  <ToastPrimitives.Close ref={ref} className={styles.Close} toast-close='' {...props}>
-    <X className={styles.X} />
+  <ToastPrimitives.Close
+    ref={ref}
+    className={styles.Close}
+    aria-label='Close notification'
+    toast-close=''
+    {...props}
+  >
+    <X aria-hidden='true' className={styles.X} />
   </ToastPrimitives.Close>
 ))
 ToastClose.displayName = ToastPrimitives.Close.displayName

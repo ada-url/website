@@ -58,30 +58,36 @@ export default function PlaygroundForm() {
 
   return (
     <div className={`${styles.formContainer} not-content`}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} aria-label='URL parser'>
         <label className={styles.Label}>
-          <select className={styles.Select} {...register('version')}>
+          <select className={styles.Select} aria-label='Ada version' {...register('version')}>
             {versions.map((value, _index) => (
               <option className={styles.Option} value={value} key={value}>
                 {value}
               </option>
             ))}
           </select>
-          <ChevronDown className={`${styles.Icon} ${styles.Caret}`} />
+          <ChevronDown aria-hidden='true' className={`${styles.Icon} ${styles.Caret}`} />
         </label>
 
         <div>
           <input
             type='text'
             required
+            aria-label='URL to parse'
             placeholder='Please enter a valid URL to parse through Ada'
             defaultValue={defaultValue}
             {...register('url', { required: true })}
             className={styles.Input}
           />
 
-          <button type='submit' disabled={formState.isLoading} className={styles.Button}>
-            {formState.isLoading && <Loader2 className={styles.loader} />}
+          <button
+            type='submit'
+            disabled={formState.isLoading}
+            aria-busy={formState.isLoading}
+            className={styles.Button}
+          >
+            {formState.isLoading && <Loader2 aria-hidden='true' className={styles.loader} />}
             Parse
           </button>
         </div>
