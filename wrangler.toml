@@ -1,5 +1,6 @@
 name = "ada-website"
 compatibility_date = "2026-03-21"
+compatibility_flags = ["nodejs_compat"]
 send_metrics = false
 preview_urls = true
 
