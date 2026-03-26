@@ -1,7 +1,7 @@
-import starlight from '@astrojs/starlight'
-import { defineConfig } from 'astro/config'
 import react from '@astrojs/react'
+import starlight from '@astrojs/starlight'
 import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'astro/config'
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,9 +20,7 @@ export default defineConfig({
     starlight({
       // https://starlight.astro.build/reference/configuration
       title: 'Ada URL',
-      social: [
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/ada-url/ada' },
-      ],
+      social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/ada-url/ada' }],
       sidebar: [
         {
           label: 'Getting Started',
@@ -84,9 +82,7 @@ export default defineConfig({
         dark: './astro/assets/logo-dark.svg',
         replacesTitle: true,
       },
-      customCss: [
-        './astro/custom.css',
-      ],
+      customCss: ['./astro/custom.css'],
       editLink: {
         baseUrl: 'https://github.com/ada-url/website/edit/main',
       },

@@ -1,7 +1,7 @@
-import WASM from '@/lib/wasm/wasm.js'
 import { ChevronDown, Loader2 } from 'lucide-react'
 import { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import WASM from '@/lib/wasm/wasm.js'
 import ParsingResult, { type WASMResponse } from './result'
 import styles from './styles/form.module.css'
 import { useToast } from './ui/use-toast'
@@ -61,7 +61,7 @@ export default function PlaygroundForm() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <label className={styles.Label}>
           <select className={styles.Select} {...register('version')}>
-            {versions.map((value, index) => (
+            {versions.map((value, _index) => (
               <option className={styles.Option} value={value} key={value}>
                 {value}
               </option>

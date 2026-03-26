@@ -1,7 +1,12 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "organizeImports": {
-    "enabled": true
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "linter": {
     "enabled": true,
@@ -31,15 +36,16 @@
     "lineWidth": 100
   },
   "files": {
-    "ignore": [
-      "node_modules",
-      "public",
-      ".next",
-      ".contentlayer",
-      "lib/wasm",
-      ".vercel",
-      ".astro",
-      "dist"
+    "includes": [
+      "**",
+      "!node_modules",
+      "!public",
+      "!.next",
+      "!.contentlayer",
+      "!lib/wasm",
+      "!.vercel",
+      "!.astro",
+      "!dist"
     ]
   },
   "javascript": {
@@ -51,6 +57,20 @@
       "semicolons": "asNeeded"
     }
   },
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedImports": "off",
+            "noUnusedVariables": "off",
+            "noUnusedFunctionParameters": "off"
+          }
+        }
+      }
+    }
+  ],
   "css": {
     "formatter": {
       "enabled": true
