@@ -69,6 +69,10 @@ export default defineConfig({
               label: 'D client',
               slug: 'clients/d',
             },
+            {
+              label: 'Kotlin client',
+              slug: 'clients/kotlin',
+            },
           ],
         },
       ],
