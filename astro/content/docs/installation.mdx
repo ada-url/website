@@ -5,7 +5,7 @@ description: How to install Ada and add as a dependency
 import { Steps } from '@astrojs/starlight/components';
 
 :::note
-Ada is available on different programming languages such as **C++**, **Python**, **Go**, **Rust** or **LuaJIT**. 
+Ada is available on different programming languages such as **C++**, **Python**, **Go**, **Rust**, **Kotlin** or **LuaJIT**. 
 :::
 
 ## Homebrew
@@ -24,7 +24,7 @@ brew install ada-url
 ### Requirements
 
 The project is self-contained and has no dependency.
-A recent C++ compiler supporting C++17. We test GCC 9 or better, LLVM 10 or better and Microsoft Visual Studio 2022.
+A recent C++ compiler supporting C++20. We test GCC 12 or better, LLVM 14 or better and Microsoft Visual Studio 2022.
 
 ### Compiling
 
@@ -61,6 +61,20 @@ Run the following commands to compile and build Ada locally.
    ```
 </Steps>
 
+### Build options
+
+Ada provides the following CMake options to customize the build:
+
+- `ADA_TESTING`: Enable tests (requires git). Default: `OFF`.
+- `ADA_USE_SIMDUTF`: Enable SIMD-accelerated Unicode processing via simdutf. Default: `OFF`.
+
+Example with tests enabled:
+
+```bash
+cmake -B build -DADA_TESTING=ON && cmake --build build
+ctest --output-on-failure --test-dir build
+```
+
 ### Windows
 
 Windows users need additional flags to specify the build configuration, e.g. `--config Release`.
@@ -73,10 +87,10 @@ The project can also be built via docker using default docker file of repository
 
 1. **Build**
 
-   Build and prepare the docker file
+   Build and prepare the docker image
 
    ```bash
-   docker build -t ada-builder
+   docker build -t ada-builder .
    ```
 
 2. **Run**
@@ -91,7 +105,7 @@ The project can also be built via docker using default docker file of repository
 
 ### Amalgamation
 
-You may amalgamate all source files into only two files (`ada.h` and `ada.cpp`) by typing executing the Python
+You may amalgamate all source files into only two files (`ada.h` and `ada.cpp`) by executing the Python
 3 script `singleheader/amalgamate.py`. By default, the files are created in the `singleheader` directory.
 
 ```bash

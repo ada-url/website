@@ -9,7 +9,7 @@ More information about the API can be found from [C++ API Reference](https://cpp
 ## Requirements
 
 The project is self-contained and has no dependency.
-A recent C++ compiler supporting C++17. We test GCC 9 or better, LLVM 10 or better and Microsoft Visual Studio 2022.
+A recent C++ compiler supporting C++20. We test GCC 12 or better, LLVM 14 or better and Microsoft Visual Studio 2022.
 
 ## Building
 
@@ -32,22 +32,62 @@ Run the following commands to compile and build Ada locally.
 
 </Steps>
 
+## Quick Start
+
+Linux or macOS users can get started quickly with the single-header release:
+
+<Steps>
+
+  1. **Download the single-header release**
+
+     ```bash
+     wget https://github.com/ada-url/ada/releases/download/v3.0.0/ada.cpp
+     wget https://github.com/ada-url/ada/releases/download/v3.0.0/ada.h
+     ```
+
+  2. **Create a `demo.cpp` file**
+
+     ```cpp
+     #include "ada.cpp"
+     #include "ada.h"
+     #include <iostream>
+
+     int main(int, char *[]) {
+       auto url = ada::parse("https://www.google.com");
+       if (!url) {
+         std::cout << "failure" << std::endl;
+         return EXIT_FAILURE;
+       }
+       url->set_protocol("http");
+       std::cout << url->get_protocol() << std::endl;
+       std::cout << url->get_host() << std::endl;
+       return EXIT_SUCCESS;
+     }
+     ```
+
+  3. **Compile and run**
+
+     ```bash
+     c++ -std=c++20 -o demo demo.cpp
+     ./demo
+     ```
+
+     Output:
+
+     ```
+     http:
+     www.google.com
+     ```
+
+</Steps>
+
 ## Usage
 
-Use the following code to run and test Ada.
+Ada supports two URL instance types: `ada::url` and `ada::url_aggregator`. The
+`ada::url_aggregator` is smaller and backed by a precomputed serialized URL string;
+`ada::url` stores each component as a separate string.
 
-```cpp
-#include "ada.h"
-#include <iostream>
-
-int main(int , char *[]) {
-  ada::result<ada::url_aggregator> url = ada::parse<ada::url_aggregator>("https://www.google.com");
-  url->set_protocol("http");
-  std::cout << url->get_protocol() << std::endl;
-  std::cout << url->get_host() << std::endl;
-  return EXIT_SUCCESS;
-}
-```
+Use the `ada::parse` function template to parse either type.
 
 ### Parsing & Validation
 
@@ -144,4 +184,88 @@ url->set_search("target=self");
 auto url = ada::parse<ada::url_aggregator>("https://www.google.com");
 url->set_hash("is-this-the-real-life");
 // url->get_hash() will return "#is-this-the-real-life"
+```
+
+## URL Search Params
+
+```cpp
+ada::url_search_params search_params("a=b&c=d&e=f");
+search_params.append("g=h");
+
+search_params.get("g");  // will return "h"
+
+auto keys = search_params.get_keys();
+while (keys.has_next()) {
+  auto key = keys.next();  // "a", "c", "e", "g"
+}
+```
+
+## URLPattern
+
+Ada includes a [URLPattern](https://url.spec.whatwg.org/#urlpattern) implementation
+compatible with the web-platform tests. The implementation does not bundle a regex
+engine — you provide one that fits your security requirements.
+
+```cpp
+// Define a regex engine conforming to the required interface.
+// This example uses the V8 engine as used by Node.js and Cloudflare Workers.
+class v8_regex_provider {
+ public:
+  v8_regex_provider() = default;
+  using regex_type = v8::Global<v8::RegExp>;
+  static std::optional<regex_type> create_instance(std::string_view pattern,
+                                                   bool ignore_case);
+  static std::optional<std::vector<std::optional<std::string>>> regex_search(
+      std::string_view input, const regex_type& pattern);
+  static bool regex_match(std::string_view input, const regex_type& pattern);
+};
+
+// Define a URLPattern
+auto pattern = ada::parse_url_pattern<v8_regex_provider>(
+    "/books/:id(\\d+)", "https://example.com");
+
+if (!pattern) { return EXIT_FAILURE; }
+
+// Match a URL
+auto match = pattern->match("https://example.com/books/123");
+
+// Test a URL
+auto matched = pattern->test("https://example.com/books/123");
+```
+
+## C Wrapper
+
+Ada provides a C interface for use from C or other languages that can bind to C
+libraries. See `include/ada_c.h` for the full API. Inputs must be ASCII or UTF-8.
+
+```c
+#include "ada_c.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main(int c, char *arg[]) {
+  const char* input =
+      "https://username:password@www.google.com:8080/"
+      "pathname?query=true#hash-exists";
+  ada_url url = ada_parse(input, strlen(input));
+  if (!ada_is_valid(url)) { puts("failure"); return EXIT_FAILURE; }
+
+  ada_string href = ada_get_href(url);
+  printf("%.*s\n", (int)href.length, href.data);
+  // https://username:password@www.google.com:8080/pathname?query=true#hash-exists
+
+  ada_free(url);
+  return EXIT_SUCCESS;
+}
+```
+
+When linking against Ada from C, link with the C++ compiler so the C++ standard
+library is available:
+
+```bash
+c++ -c ada.cpp -std=c++20
+cc -c demo.c
+c++ demo.o ada.o -o cdemo
+./cdemo
 ```
