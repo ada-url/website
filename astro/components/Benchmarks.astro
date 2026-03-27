@@ -1,3 +1,12 @@
+---
+const data = [
+  { name: "Ada", ns: 188 },
+  { name: "Servo URL", ns: 664 },
+  { name: "cURL", ns: 1471 },
+]
+const max = 2000
+---
+
 <section aria-labelledby="benchmarks-heading">
   <header>
     <h2 id="benchmarks-heading">Ada is fast</h2>
@@ -10,30 +19,20 @@
       </a>{" "} we find that ada can be several times faster than popular competitors.
     </p>
   </header>
-  <div>
-    <div style="width: 800px;" class="container-chart">
-      <canvas
-        id="acquisitions"
-        role="img"
-        aria-label="Bar chart comparing URL parsing speed: Ada 188 ns/URL, Servo URL 664 ns/URL, cURL 1471 ns/URL"
-      ></canvas>
+  <figure>
+    <figcaption class="sr-only">URL parsing speed comparison (lower is faster)</figcaption>
+    <div class="bar-chart">
+      {data.map(({ name, ns }) => (
+        <div class="bar-row">
+          <span class="bar-label">{name}</span>
+          <div class="bar-track">
+            <div class="bar" style={`--w: ${(ns / max * 100).toFixed(2)}%`}></div>
+          </div>
+          <span class="bar-value">{ns}<abbr title="nanoseconds per URL"> ns/URL</abbr></span>
+        </div>
+      ))}
     </div>
-    <!-- Visually-hidden text alternative for screen readers -->
-    <table class="sr-only">
-      <caption>URL parsing speed comparison (lower is faster)</caption>
-      <thead>
-        <tr>
-          <th scope="col">Parser</th>
-          <th scope="col">Speed (ns/URL)</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Ada</td><td>188</td></tr>
-        <tr><td>Servo URL</td><td>664</td></tr>
-        <tr><td>cURL</td><td>1471</td></tr>
-      </tbody>
-    </table>
-  </div>
+  </figure>
 </section>
 
 <style>
@@ -72,13 +71,11 @@
   a {
     font-weight: 700;
   }
-  
-  .container-chart {
-    max-width: 100%;
-    margin-inline: auto;
+
+  figure {
+    margin: 0;
   }
 
-  /* Visually hidden but accessible to screen readers */
   .sr-only {
     position: absolute;
     width: 1px;
@@ -91,8 +88,62 @@
     border-width: 0;
   }
 
+  .bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 800px;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr 6.5rem;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .bar-label {
+    text-align: right;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--sl-color-gray-3);
+  }
+
+  .bar-track {
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background: var(--sl-color-gray-6);
+    overflow: hidden;
+  }
+
+  .bar {
+    height: 100%;
+    width: var(--w);
+    background: #8884d8;
+    border-radius: 0.5rem;
+    transition: background 0.15s;
+  }
+
+  .bar:hover {
+    background: #7874c8;
+  }
+
+  .bar-value {
+    font-size: 0.75rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--sl-color-gray-3);
+  }
+
+  abbr {
+    text-decoration: none;
+  }
+
   :root[data-theme="dark"] {
-    & p {
+    & p,
+    & .bar-label,
+    & .bar-value {
       color: var(--sl-color-gray-2);
     }
 
@@ -103,14 +154,16 @@
 
   @media (max-width: 768px) {
     h2 {
-        font-size: 1.875rem;
-        line-height: 2.25rem;
+      font-size: 1.875rem;
+      line-height: 2.25rem;
+    }
+
+    .bar-row {
+      grid-template-columns: 5.5rem 1fr 5rem;
     }
   }
 
   @media (min-width: 640px) {
-  
-
     p {
       font-size: 1.125rem;
       line-height: 1.75rem;
@@ -122,117 +175,4 @@
       max-width: 1400px;
     }
   }
-</style>  
-
-<script>
-  import {
-    Chart,
-    BarController,
-    BarElement,
-    CategoryScale,
-    LinearScale,
-    Legend,
-    Tooltip,
-  } from "chart.js";
-
-  Chart.register(BarController, BarElement, CategoryScale, LinearScale, Legend, Tooltip);
-
-  function getChartColors() {
-    const style = getComputedStyle(document.documentElement);
-    // Use Starlight's own grey tokens so colours adapt to both themes
-    const tickColor =
-      style.getPropertyValue("--sl-color-gray-3").trim() || "#6b7280";
-    const gridColor =
-      style.getPropertyValue("--sl-color-gray-6").trim() ||
-      "rgba(107,114,128,0.2)";
-    return { tickColor, gridColor };
-  }
-
-  const data = [
-    { competitors: "Ada", count: 188 },
-    { competitors: "Servo URL", count: 664 },
-    { competitors: "cURL", count: 1471 },
-  ];
-
-  let chart: Chart | null = null;
-
-  function buildChart() {
-    const canvas = document.getElementById(
-      "acquisitions"
-    ) as HTMLCanvasElement | null;
-    if (!canvas) return;
-
-    if (chart) chart.destroy();
-
-    const { tickColor, gridColor } = getChartColors();
-
-    chart = new Chart(canvas, {
-      type: "bar",
-      options: {
-        indexAxis: "y",
-        scales: {
-          x: {
-            max: 2000,
-            ticks: {
-              maxTicksLimit: 5,
-              callback: function (value) {
-                return `${value}ns`;
-              },
-              color: tickColor,
-            },
-            grid: {
-              display: true,
-              color: gridColor,
-            },
-          },
-          y: {
-            ticks: {
-              color: tickColor,
-            },
-            grid: {
-              display: false,
-            },
-          },
-        },
-        plugins: {
-          legend: {
-            display: false,
-          },
-          tooltip: {
-            displayColors: false,
-            callbacks: {
-              title: function () {
-                return "";
-              },
-              label: function (tooltipItem: { raw: any }) {
-                const value = tooltipItem.raw;
-                return `${value}ns`;
-              },
-            },
-          },
-        },
-      },
-      data: {
-        labels: data.map((row) => row.competitors),
-        datasets: [
-          {
-            data: data.map((row) => row.count),
-            backgroundColor: "#8884D8",
-            hoverBackgroundColor: "#7874C8",
-            borderRadius: 10,
-            maxBarThickness: 45,
-          },
-        ],
-      },
-    });
-  }
-
-  buildChart();
-
-  // Rebuild the chart whenever Starlight switches between light and dark themes
-  // so tick/grid colours stay legible in both modes.
-  new MutationObserver(() => buildChart()).observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["data-theme"],
-  });
-</script>
+</style>
