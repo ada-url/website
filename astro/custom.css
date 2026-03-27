@@ -5,3 +5,22 @@
 :root[data-theme="light"] {
   --sl-color-toast-red: #dc2626;
 }
+
+/* SiteTitle layout — kept here (render-blocking) to prevent FOUC in dev mode */
+.site-title-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.site-title-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (min-width: 72rem) {
+  .site-title-wrapper,
+  .site-title-nav {
+    gap: 1.5rem;
+  }
+}

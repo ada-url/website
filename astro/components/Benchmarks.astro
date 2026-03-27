@@ -125,7 +125,17 @@
 </style>  
 
 <script>
-  import Chart from "chart.js/auto";
+  import {
+    Chart,
+    BarController,
+    BarElement,
+    CategoryScale,
+    LinearScale,
+    Legend,
+    Tooltip,
+  } from "chart.js";
+
+  Chart.register(BarController, BarElement, CategoryScale, LinearScale, Legend, Tooltip);
 
   function getChartColors() {
     const style = getComputedStyle(document.documentElement);

@@ -13,12 +13,12 @@ function pathsMatch(lhs: string, rhs: string): boolean {
 }
 ---
 
-<div>
+<div class="site-title-wrapper">
   <AstrolightSiteTitle {...Astro.props} />
 
   <div class="separator"></div>
 
-  <nav aria-label="Main navigation">
+  <nav class="site-title-nav" aria-label="Main navigation">
     {
       menuItems.map((menuItem) => (
         <a
@@ -35,26 +35,20 @@ function pathsMatch(lhs: string, rhs: string): boolean {
 </div>
 
 <style>
-  div {
-    display: flex;
-    gap: var(--sl-content-pad-x);
-    align-items: center;
-  }
-
   .separator {
     content: "";
     height: 1.5rem;
     border-inline-end: 1px solid var(--sl-color-gray-4);
   }
 
-  div a {
+  .site-title-wrapper a {
     text-decoration: none;
     color: var(--sl-color-white);
     font-size: var(--sl-text-base);
     font-weight: 500;
   }
 
-  div a:hover {
+  .site-title-wrapper a:hover {
     text-decoration: underline;
     color: var(--sl-color-text-accent);
   }
@@ -63,14 +57,5 @@ function pathsMatch(lhs: string, rhs: string): boolean {
   [aria-current="page"]:hover,
   [aria-current="page"]:focus {
     color: var(--sl-color-text-accent);
-  }
-
-  @media (min-width: 50rem) {
-    nav {
-      display: flex;
-    }
-    .separator {
-      display: block;
-    }
   }
 </style>
